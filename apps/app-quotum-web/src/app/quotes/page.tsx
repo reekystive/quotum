@@ -28,7 +28,7 @@ export default async function QuotesListPage() {
 
   return (
     <main className="mx-auto flex min-h-svh max-w-2xl flex-col items-stretch justify-center px-2 pb-8">
-      <h1 className="flex flex-row items-center justify-start self-start pb-4 pt-16 font-serif text-2xl text-neutral-900 dark:text-white">
+      <h1 className="flex flex-row items-center justify-start self-start px-2 pb-4 pt-16 font-serif text-2xl text-neutral-900 dark:text-white">
         <Link href="/" className="font-serif text-2xl text-neutral-900 dark:text-white">
           Quotum
         </Link>
@@ -38,7 +38,7 @@ export default async function QuotesListPage() {
 
       <div className="flex flex-col items-stretch gap-2">
         {quotes.map((quote: Quote) => (
-          <div key={quote.id} className="px-4 py-3">
+          <div key={quote.id} className="px-2 py-3">
             <blockquote className="font-serif text-lg leading-relaxed text-neutral-900 dark:text-white">
               <span className="select-none pr-1 align-bottom text-4xl">&ldquo;</span>
               <span className="text-lg">{quote.content}</span>

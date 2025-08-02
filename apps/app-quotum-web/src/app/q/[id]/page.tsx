@@ -34,7 +34,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
   }
 
   return (
-    <main className="mx-auto flex min-h-svh max-w-2xl flex-col items-stretch justify-center px-2">
+    <main className="mx-auto flex min-h-svh max-w-2xl flex-col items-stretch justify-center px-4">
       <blockquote className="font-serif leading-relaxed text-neutral-900 dark:text-white">
         <span className="select-none pr-1 align-bottom text-6xl">&ldquo;</span>
         <span className="text-2xl">{quote.content}</span>
