@@ -1,5 +1,6 @@
 import { trpc } from '#src/services/trpc-client.ts';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
+import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function QuotesListPage() {
@@ -42,12 +43,23 @@ export default async function QuotesListPage() {
             <div className="flex flex-col items-stretch gap-1 text-sm text-neutral-600 dark:text-neutral-400">
               <div className="font-medium">
                 <Link
-                  href={quote.url}
-                  target="_blank"
+                  href={`/q/${quote.id}`}
                   rel="noopener noreferrer"
                   className="text-blue-700 hover:underline dark:text-blue-300"
                 >
-                  View original
+                  View quote
+                </Link>
+
+                <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
+
+                <Link
+                  href={quote.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-row items-center gap-1 text-blue-700 hover:underline dark:text-blue-300"
+                >
+                  <span className="inline-block">Read original</span>
+                  <ExternalLink className="inline-block" size={14} />
                 </Link>
 
                 <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
