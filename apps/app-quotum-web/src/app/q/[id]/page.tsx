@@ -4,13 +4,13 @@ import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 interface QuotePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function QuotePage({ params }: QuotePageProps) {
-  const { id } = params;
+  const { id } = await params;
   let quote: Quote | null = null;
   let error: Error | null = null;
 
