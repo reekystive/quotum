@@ -18,9 +18,6 @@
     },
     {
       "path": "../../packages/app-types/tsconfig.json"
-    },
-    {
-      "path": "../../apps/app-quotum-server/tsconfig.json"
     }
   ]
 }

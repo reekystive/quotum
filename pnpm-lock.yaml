@@ -483,12 +483,6 @@ importers:
       '@quotum/utils':
         specifier: workspace:^
         version: link:../../packages/utils
-      '@tanstack/react-query':
-        specifier: 'catalog:'
-        version: 5.81.5(react@19.1.0)
-      '@trpc/client':
-        specifier: 'catalog:'
-        version: 11.4.3(@trpc/server@11.4.3(typescript@5.8.3))(typescript@5.8.3)
       motion:
         specifier: 'catalog:'
         version: 12.18.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)

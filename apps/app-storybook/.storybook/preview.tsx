@@ -1,7 +1,5 @@
 import '#src/global.css';
-import { createQueryClient } from '#src/providers/tanstack-query.js';
 import type { Preview } from '@storybook/react-vite';
-import { QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import { scan } from 'react-scan';
 
@@ -62,15 +60,6 @@ const preview: Preview = {
       }, [selectedTheme, systemTheme]);
 
       return <Story />;
-    },
-    // Tanstack Query decorator. create a new query client for each story.
-    function Decorator(Story) {
-      const queryClient = createQueryClient();
-      return (
-        <QueryClientProvider client={queryClient}>
-          <Story />
-        </QueryClientProvider>
-      );
     },
   ],
 };
