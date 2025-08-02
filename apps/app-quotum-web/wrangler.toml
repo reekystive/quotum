@@ -51,7 +51,7 @@ migrations_dir = "../../apps/trpc-server/drizzle"
 # Environment-specific configurations
 # The default environment is development, and production env tag is required to set explicitly
 [env.production]
-name = "quotum-prod"
+name = "quotum"
 
 [[env.production.d1_databases]]
 binding = "D1"
