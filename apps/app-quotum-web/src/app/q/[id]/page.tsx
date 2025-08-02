@@ -10,7 +10,7 @@ interface QuotePageProps {
 }
 
 export default async function QuotePage({ params }: QuotePageProps) {
-  const id = params.id;
+  const { id } = params;
   let quote: Quote | null = null;
   let error: Error | null = null;
 
