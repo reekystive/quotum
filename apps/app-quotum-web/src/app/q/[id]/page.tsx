@@ -40,7 +40,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
         <span className="select-none pl-1 align-top text-6xl">&rdquo;</span>
       </blockquote>
 
-      <div className="mb-8 mt-1 h-[1px] bg-neutral-500/20"></div>
+      <div className="mb-8 mt-4 h-[1px] bg-neutral-500/20"></div>
 
       <div className="self-center text-sm font-medium text-neutral-600 dark:text-neutral-400">
         <span>{quote.title}</span>
