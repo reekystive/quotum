@@ -1,6 +1,6 @@
 import cspellPlugin from '@cspell/eslint-plugin';
-import { FlatCompat } from '@eslint/eslintrc';
 import eslintJsPlugin from '@eslint/js';
+import next from '@next/eslint-plugin-next';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import reactPlugin from 'eslint-plugin-react';
@@ -21,11 +21,7 @@ const STORYBOOK_FILES = ['**/{,.}*.stories.{,c,m}{j,t}s{,x}'];
 const STORYBOOK_MAIN_FILES = ['**/.storybook/main.{,c,m}{j,t}s'];
 
 /** @type {string[]} */
-const NEXTJS_FILES = ['apps/app-template-nextjs/src/**/{,.}*.{,c,m}{j,t}s{,x}'];
-
-const flatCompat = new FlatCompat({
-  baseDirectory: new URL('.', import.meta.url).pathname,
-});
+const NEXTJS_FILES = ['apps/app-quotum-web/src/**/{,.}*.{,c,m}{j,t}s{,x}'];
 
 const typescriptConfigs = /** @type {import('eslint').Linter.Config[]} */ (
   tsEslint.config({
@@ -43,9 +39,6 @@ const typescriptConfigs = /** @type {import('eslint').Linter.Config[]} */ (
     extends: [tsEslint.configs.strictTypeChecked, tsEslint.configs.stylisticTypeChecked],
   })
 );
-
-const nextjsTemplateAppPath = new URL('./apps/app-template-nextjs', import.meta.url);
-const nextjsConfig = flatCompat.extends('next/core-web-vitals', 'next/typescript');
 
 /**
  * @type {import('eslint').Linter.Config[]}
@@ -111,18 +104,13 @@ const eslintConfig = [
   },
 
   // config for nextjs
-  ...nextjsConfig.map((config) => ({
-    ...config,
-    files: NEXTJS_FILES,
-    settings: {
-      next: {
-        rootDir: ['apps/app-quotum-web'],
-      },
-    },
-  })),
   {
+    plugins: {
+      '@next/next': /** @type {any} */ (next.flatConfig.recommended.plugins['@next/next']),
+    },
     rules: {
-      '@next/next/no-html-link-for-pages': ['error', nextjsTemplateAppPath.pathname],
+      .../** @type {Record<string, import('eslint').Linter.RuleEntry>} */ (next.flatConfig.recommended.rules),
+      .../** @type {Record<string, import('eslint').Linter.RuleEntry>} */ (next.flatConfig.coreWebVitals.rules),
     },
     files: NEXTJS_FILES,
   },
