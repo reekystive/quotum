@@ -1,5 +1,5 @@
 import { getTRPCUrl } from '#src/utils/urls.ts';
-import type { AppRouter } from '@quotum/app-trpc-server/shared-types';
+import type { AppRouter } from '@quotum/app-quotum-server/shared-types';
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 import { createTRPCReact, type CreateTRPCReact } from '@trpc/react-query';
 

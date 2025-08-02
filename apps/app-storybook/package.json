@@ -28,7 +28,7 @@
     "react-scan": "catalog:"
   },
   "devDependencies": {
-    "@quotum/app-trpc-server": "workspace:^",
+    "@quotum/app-quotum-server": "workspace:^",
     "@quotum/app-types": "workspace:^",
     "@quotum/tsconfig": "workspace:^",
     "@storybook/builder-vite": "catalog:",

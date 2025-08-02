@@ -1,5 +1,5 @@
 import { routes } from '#src/routes.ts';
-import { appRouter } from '@quotum/app-trpc-server/shared';
+import { appRouter } from '@quotum/app-quotum-server/shared';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 // @link https://nextjs.org/docs/app/api-reference/file-conventions/route

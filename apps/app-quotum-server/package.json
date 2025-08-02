@@ -1,5 +1,5 @@
 {
-  "name": "@quotum/app-trpc-server",
+  "name": "@quotum/app-quotum-server",
   "version": "0.0.0",
   "private": true,
   "type": "module",

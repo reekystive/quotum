@@ -1,4 +1,4 @@
-import type { AppRouter } from '@quotum/app-trpc-server/shared-types';
+import type { AppRouter } from '@quotum/app-quotum-server/shared-types';
 import { createTRPCClient, httpBatchLink } from '@trpc/client';
 
 const baseUrl = new URL(import.meta.env.BASE_URL, window.location.origin);

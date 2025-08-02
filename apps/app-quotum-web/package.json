@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:watch:web": "nodemon --quiet --watch '../../apps-server/trpc-server/dist/**/*' --ext js,mjs --exec 'pnpm run dev'",
+    "dev:watch:web": "nodemon --quiet --watch '../../apps/app-quotum-server/dist/**/*' --ext js,mjs --exec 'pnpm run dev'",
     "dev:watch": "concurrently --prefix-colors red.dim,yellow.dim --names web,server --pad-prefix 'pnpm run dev:watch:web' 'pnpm run build:tsc:watch --preserveWatchOutput'",
     "build": "next build",
     "build:tsc": "tsc --build tsconfig.json",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
-    "@quotum/app-trpc-server": "workspace:^",
+    "@quotum/app-quotum-server": "workspace:^",
     "@quotum/app-types": "workspace:^",
     "@quotum/tsconfig": "workspace:^",
     "@tailwindcss/postcss": "catalog:",

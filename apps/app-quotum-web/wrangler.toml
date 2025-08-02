@@ -28,7 +28,7 @@ binding = "D1"
 database_name = "quotum-dev"
 database_id = "375fdcce-2aa7-4c56-a80e-73b088830f69"
 # Use drizzle-kit for database migrations in local development. This is only used in ci testing.
-migrations_dir = "../../apps/trpc-server/drizzle"
+migrations_dir = "../../apps/app-quotum-server/drizzle"
 
 # Environment Variables
 # https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables

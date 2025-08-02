@@ -20,7 +20,7 @@
       "path": "./apps/app-storybook/tsconfig.json"
     },
     {
-      "path": "./apps/trpc-server/tsconfig.json"
+      "path": "./apps/app-quotum-server/tsconfig.json"
     }
   ]
 }

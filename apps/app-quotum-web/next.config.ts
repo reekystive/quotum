@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   typescript: {
     tsconfigPath: './tsconfig.web.json',
   },
-  transpilePackages: ['@quotum/app-trpc-server'],
+  transpilePackages: ['@quotum/app-quotum-server'],
 };
 
 export default nextConfig;
