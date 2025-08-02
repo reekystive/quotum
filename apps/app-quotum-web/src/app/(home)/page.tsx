@@ -8,7 +8,7 @@ export default function Home() {
 
       <div className="h-2" />
 
-      <p className="self-center px-2 italic text-neutral-600 dark:text-neutral-400">
+      <p className="self-center px-2 text-center italic text-neutral-600 dark:text-neutral-400">
         A quote is a piece of text that is attributed to a person.
       </p>
 
