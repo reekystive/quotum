@@ -1,4 +1,4 @@
-import { getTRPCUrl } from '#src/utils/urls.ts';
+import { trpcEndpoint } from '#src/utils/urls.ts';
 import type { AppRouter } from '@quotum/app-quotum-server/shared-types';
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 import { createTRPCReact, type CreateTRPCReact } from '@trpc/react-query';
@@ -11,11 +11,10 @@ import { createTRPCReact, type CreateTRPCReact } from '@trpc/react-query';
  * @returns tRPC client instance
  */
 export const createTrpcClient = () => {
-  const endpoint = getTRPCUrl();
   return createTRPCProxyClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: endpoint,
+        url: trpcEndpoint,
         fetch: async (...props) => {
           if (process.env.NODE_ENV === 'development') {
             // add a delay to the request to simulate a slow network
@@ -36,7 +35,7 @@ export const api: CreateTRPCReact<AppRouter, unknown> = createTRPCReact<AppRoute
 export const trpcClient = api.createClient({
   links: [
     httpBatchLink({
-      url: getTRPCUrl(),
+      url: trpcEndpoint,
       fetch: async (...props) => {
         if (process.env.NODE_ENV === 'development') {
           // add a delay to the request to simulate a slow network
