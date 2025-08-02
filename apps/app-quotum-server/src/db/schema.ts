@@ -1,10 +1,11 @@
+import { randomUUID } from 'crypto';
 import { sql } from 'drizzle-orm';
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const quotesTable = sqliteTable('quotes', {
   id: text('id')
     .primaryKey()
-    .default(sql`('quote-' || lower(hex(randomblob(16))))`),
+    .$defaultFn(() => randomUUID()),
   content: text('content').notNull(),
   title: text('title').notNull(),
   url: text('url').notNull(),

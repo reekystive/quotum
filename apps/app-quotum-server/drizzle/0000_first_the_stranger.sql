@@ -1,5 +1,5 @@
 CREATE TABLE `quotes` (
-	`id` text PRIMARY KEY DEFAULT ('quote-' || lower(hex(randomblob(16)))) NOT NULL,
+	`id` text PRIMARY KEY NOT NULL,
 	`content` text NOT NULL,
 	`title` text NOT NULL,
 	`url` text NOT NULL,

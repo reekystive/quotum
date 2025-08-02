@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "8c04e235-ee87-454a-a02a-98fa96d45522",
+  "id": "16a49dc4-dc7c-4491-a6b6-0bd14a30235f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "quotes": {
@@ -12,8 +12,7 @@
           "type": "text",
           "primaryKey": true,
           "notNull": true,
-          "autoincrement": false,
-          "default": "('quote-' || lower(hex(randomblob(16))))"
+          "autoincrement": false
         },
         "content": {
           "name": "content",
