@@ -1,4 +1,5 @@
 import { trpc } from '#src/services/trpc-client.ts';
+import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -57,7 +58,7 @@ export default async function QuotesListPage() {
                 <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
 
                 <Link
-                  href={quote.url}
+                  href={addTextAnchorToUrl(new URL(quote.url), quote.title)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex flex-row items-center gap-1 text-blue-700 hover:underline dark:text-blue-300"
