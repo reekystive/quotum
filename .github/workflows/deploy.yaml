@@ -113,7 +113,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy to Cloudflare Workers
     needs: [lint, test, build]
-    if: contains(fromJson('["refs/heads/main", "refs/heads/dev", "refs/heads/staging"]'), github.ref) && github.event_name == 'push'
+    if: contains(fromJson('["refs/heads/main", "refs/heads/dev"]'), github.ref) && github.event_name == 'push'
 
     steps:
       - name: Setup Node.js
@@ -139,8 +139,7 @@ jobs:
         id: get-environment-name
         run: |
           if [ ${{ github.ref }} == "refs/heads/main" ]; then DEPLOY_ENVIRONMENT="production"
-          elif [ ${{ github.ref }} == "refs/heads/staging" ]; then DEPLOY_ENVIRONMENT="staging"
-          else DEPLOY_ENVIRONMENT="default"
+          else DEPLOY_ENVIRONMENT="development"
           fi
           echo "environment=${DEPLOY_ENVIRONMENT}" >> $GITHUB_OUTPUT
 
@@ -153,7 +152,7 @@ jobs:
           accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: deploy
-          environment: ${{ env.DEPLOY_ENVIRONMENT != 'default' && env.DEPLOY_ENVIRONMENT || '' }}
+          environment: ${{ env.DEPLOY_ENVIRONMENT != 'development' && env.DEPLOY_ENVIRONMENT || '' }}
           workingDirectory: ${{ github.workspace }}
           packageManager: pnpm
           wranglerVersion: '4.23.0'

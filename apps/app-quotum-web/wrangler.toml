@@ -63,15 +63,3 @@ SERVER_BASE_URL = "https://quotum.reekystive.workers.dev"
 
 # Note: Use secrets to store sensitive data.
 # https://developers.cloudflare.com/workers/configuration/secrets/
-
-
-[env.staging]
-name = "quotum-staging"
-
-[[env.staging.d1_databases]]
-binding = "D1"
-database_name = "quotum-staging"
-database_id = "edd8ab2f-5abd-4a08-a779-15927e5dfee6"
-
-[env.staging.vars]
-SERVER_BASE_URL = "https://quotum-staging.reekystive.workers.dev"

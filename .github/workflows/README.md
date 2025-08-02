@@ -240,12 +240,6 @@ name = "production"
 
 [env.development]
 name = "development"
-
-[env.staging]
-name = "staging"
-
-[env.preview]
-name = "preview"
 ```
 
 ## Deployment URLs
