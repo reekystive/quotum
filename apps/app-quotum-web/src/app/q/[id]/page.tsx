@@ -49,7 +49,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
         <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
 
         <Link
-          href={addTextAnchorToUrl(new URL(quote.url), quote.content)}
+          href={addTextAnchorToUrl(new URL(quote.url), quote.content).toString()}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex flex-row items-center gap-1 text-blue-700 hover:underline dark:text-blue-300"
