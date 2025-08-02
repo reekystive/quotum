@@ -21,6 +21,10 @@ export default async function QuotesListPage() {
     return 'Failed to load quotes';
   }
 
+  if (quotes.length === 0) {
+    return 'No quotes found';
+  }
+
   return (
     <main className="mx-auto flex min-h-svh max-w-2xl flex-col items-stretch justify-center px-2 pb-8">
       <h1 className="flex flex-row items-center justify-start self-start pb-4 pt-16 font-serif text-2xl text-neutral-900 dark:text-white">
@@ -64,7 +68,7 @@ export default async function QuotesListPage() {
 
                 <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
 
-                <span className="text-neutral-600 dark:text-neutral-400">{quote.title}</span>
+                <span>{quote.title}</span>
               </div>
 
               <div>Created at {new Date(quote.createdAt).toLocaleString()}</div>
