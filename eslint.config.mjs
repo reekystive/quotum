@@ -58,6 +58,7 @@ const eslintConfig = [
       '**/dist/',
       '**/storybook-static/',
       '**/.next/',
+      '**/.vercel/',
       '**/.open-next/',
       '**/.wrangler/',
       '**/app-types/quotum-cloudflare.d.ts',

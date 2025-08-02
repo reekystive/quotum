@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "pnpm run lint:tsc:root && pnpm run lint:eslint:root",
     "build:tsc:root": "tsc --build tsconfig.json",
     "build:tsc:packages": "pnpm --filter '*' --workspace-concurrency -1 run build:tsc",
     "lint:eslint:root": "eslint . --cache --cache-strategy content --cache-location ./node_modules/.cache/eslint/eslintcache.json --max-warnings 0 --report-unused-disable-directives",
