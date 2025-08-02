@@ -1,0 +1,54 @@
+words:
+  - avenir
+  - clsx
+  - cuid
+  - dotenv
+  - dotenvx
+  - elif
+  - esbuild
+  - grayscale
+  - hookz
+  - logomark
+  - lucide
+  - MERCHANTABLITY
+  - MINIFLARE
+  - mxschmitt
+  - nextjs
+  - nodemon
+  - nodenext
+  - oklch
+  - opennext
+  - opennextjs
+  - paralleldrive
+  - pkgs
+  - quotum
+  - randomblob
+  - reekystive
+  - shadcn
+  - simplewebauthn
+  - subby
+  - tanstack
+  - trpc
+  - turbopack
+  - unixepoch
+  - unplugin
+  - unrs
+  - usehooks
+  - Vercel
+  - Vite
+  - vitejs
+  - Vitest
+  - WCAG
+  - webp
+  - workerd
+flagWords:
+  - blacklist -> blocklist
+  - whitelist -> allowlist
+suggestWords:
+  - colour -> color
+ignorePaths:
+  - cspell.config.yaml
+  - pnpm-lock.yaml
+  - "*-cloudflare.d.ts"
+  - "**/drizzle/**/*"
+  - "**/.env*"

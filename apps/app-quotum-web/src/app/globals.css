@@ -1,0 +1,7 @@
+@import '@quotum/tailwindcss/tailwindcss.css';
+
+@layer base {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}

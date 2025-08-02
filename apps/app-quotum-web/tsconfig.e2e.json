@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@quotum/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "rootDir": "./tests",
+    "outDir": "./node_modules/.cache/tsc-e2e",
+    // https://github.com/microsoft/TypeScript/issues/30925#issuecomment-483371766
+    "tsBuildInfoFile": "./node_modules/.cache/tsc-e2e/tsconfig.e2e.tsbuildinfo",
+    "emitDeclarationOnly": true
+  },
+  "include": ["./tests"],
+  "exclude": ["**/node_modules/"]
+}

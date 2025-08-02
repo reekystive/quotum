@@ -1,0 +1,50 @@
+# Logs
+logs/
+*.log
+pnpm-debug.log*
+
+# Node.js
+node_modules/
+
+# Build artifacts
+dist/
+dist-ssr/
+storybook-static/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# macOS
+.DS_Store
+
+# Next.js
+.next/
+.open-next/
+
+# Local env files
+.env*.local
+
+# Vercel
+.vercel/
+
+# Workspace temp files
+workspace-tmp/
+
+# TypeScript
+*.tsbuildinfo
+
+# Wrangler files
+.wrangler/
+.dev.vars*
+!.dev.vars*.example
+
+# Playwright
+test-results/
+playwright-report/
+
+# Drizzle
+**/drizzle/local/

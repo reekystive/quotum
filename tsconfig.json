@@ -1,0 +1,26 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./packages/utils/tsconfig.json"
+    },
+    {
+      "path": "./packages/app-types/tsconfig.json"
+    },
+    {
+      "path": "./apps/app-template-vite/tsconfig.json"
+    },
+    {
+      "path": "./apps/app-quotum-web/tsconfig.json"
+    },
+    {
+      "path": "./apps/app-storybook/tsconfig.json"
+    },
+    {
+      "path": "./apps/trpc-server/tsconfig.json"
+    }
+  ]
+}

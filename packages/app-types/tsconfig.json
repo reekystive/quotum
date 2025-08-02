@@ -1,0 +1,13 @@
+{
+  "extends": "@quotum/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true,
+    "rootDir": ".",
+    "outDir": "./node_modules/.cache/tsc",
+    "tsBuildInfoFile": "./node_modules/.cache/tsc/tsconfig.tsbuildinfo",
+    "types": []
+  },
+  "files": ["app-types-vite.d.ts", "quotum-cloudflare.d.ts", "quotum-nextjs-globals.d.ts"],
+  "exclude": ["**/node_modules/"]
+}

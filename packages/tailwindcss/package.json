@@ -1,0 +1,15 @@
+{
+  "name": "@quotum/tailwindcss",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./tailwindcss.css": {
+      "default": "./tailwindcss.css"
+    }
+  },
+  "dependencies": {
+    "tailwindcss": "catalog:",
+    "tw-animate-css": "catalog:"
+  }
+}

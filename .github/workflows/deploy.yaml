@@ -1,0 +1,165 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint and typecheck
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node.js with corepack
+        uses: ./.github/actions/setup-node
+
+      - name: Setup cache
+        uses: ./.github/actions/setup-cache
+        with:
+          restore-key-prefix: 'cache-lint'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pre-build dependencies
+        run: pnpm -w run build:tsc:packages
+
+      - name: Build & typecheck
+        run: pnpm -w run build:tsc:root
+
+      - name: Run ESLint
+        run: pnpm -w run lint:eslint:root
+
+  test:
+    runs-on: ubuntu-latest
+    name: Test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node.js with corepack
+        uses: ./.github/actions/setup-node
+
+      - name: Setup cache
+        uses: ./.github/actions/setup-cache
+        with:
+          restore-key-prefix: 'cache-test'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pre-build dependencies
+        run: pnpm -w run build:tsc:packages
+
+      - name: Build & typecheck
+        run: pnpm -w run build:tsc:root
+
+      - name: Run tests
+        run: pnpm -w run test:packages
+
+  build:
+    runs-on: ubuntu-latest
+    name: Build app-quotum-web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node.js with corepack
+        uses: ./.github/actions/setup-node
+
+      - name: Setup cache
+        uses: ./.github/actions/setup-cache
+        with:
+          restore-key-prefix: 'cache-build'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pre-build dependencies
+        run: pnpm -w --workspace-concurrency -1 --filter "@quotum/app-quotum-web..." run build:tsc
+
+      - name: Build application
+        run: pnpm run build:opennext
+        working-directory: apps/app-quotum-web
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: quotum-web-opennext-dist
+          path: |
+            apps/app-quotum-web/.open-next/
+            apps/app-quotum-web/wrangler.toml
+          if-no-files-found: error
+          include-hidden-files: true
+
+  deploy-main:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Workers
+    needs: [lint, test, build]
+    if: contains(fromJson('["refs/heads/main", "refs/heads/dev", "refs/heads/staging"]'), github.ref) && github.event_name == 'push'
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable corepack
+        shell: bash
+        run: corepack enable
+
+      - name: Prepare pnpm
+        shell: bash
+        run: corepack prepare pnpm@latest --activate
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: quotum-web-opennext-dist
+          path: ${{ github.workspace }}
+
+      - name: Get environment name to deploy to
+        id: get-environment-name
+        run: |
+          if [ ${{ github.ref }} == "refs/heads/main" ]; then DEPLOY_ENVIRONMENT="production"
+          elif [ ${{ github.ref }} == "refs/heads/staging" ]; then DEPLOY_ENVIRONMENT="staging"
+          else DEPLOY_ENVIRONMENT="default"
+          fi
+          echo "environment=${DEPLOY_ENVIRONMENT}" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy-to-cloudflare
+        uses: cloudflare/wrangler-action@v3
+        env:
+          DEPLOY_ENVIRONMENT: ${{ steps.get-environment-name.outputs.environment }}
+        with:
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy
+          environment: ${{ env.DEPLOY_ENVIRONMENT != 'default' && env.DEPLOY_ENVIRONMENT || '' }}
+          workingDirectory: ${{ github.workspace }}
+          packageManager: pnpm
+          wranglerVersion: '4.23.0'
+
+      - name: Print deployment info
+        run: |
+          echo "🔍 Current ref: ${{ github.ref }}" >> $GITHUB_STEP_SUMMARY
+          echo "🚀 Deployed to environment: ${{ steps.get-environment-name.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "🌎 Deployment URL: ${{ steps.deploy-to-cloudflare.outputs.deployment-url }}" >> $GITHUB_STEP_SUMMARY

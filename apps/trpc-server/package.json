@@ -1,0 +1,64 @@
+{
+  "name": "@quotum/app-trpc-server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": null
+    },
+    "./shared-types": {
+      "import": {
+        "types": "./dist/shared-types.js",
+        "default": null
+      },
+      "default": null
+    },
+    "./shared": {
+      "import": "./dist/shared.js",
+      "default": null
+    }
+  },
+  "scripts": {
+    "dev": "tsx --tsconfig tsconfig.src.json src/bootstrap.ts",
+    "build": "tsc --build tsconfig.json",
+    "build:tsc": "tsc --build tsconfig.json",
+    "start": "node dist/bootstrap.js",
+    "lint:eslint": "eslint . --cache --cache-strategy content --cache-location ./node_modules/.cache/eslint/eslintcache.json --max-warnings 0 --report-unused-disable-directives",
+    "lint:tsc": "tsc --build tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest --watch",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
+    "db:studio:dev": "NODE_ENV=drizzle-development drizzle-kit studio",
+    "db:generate:local": "drizzle-kit --config drizzle.config.local.ts generate",
+    "db:migrate:local": "drizzle-kit --config drizzle.config.local.ts migrate",
+    "db:push:local": "drizzle-kit --config drizzle.config.local.ts push",
+    "db:studio:local": "drizzle-kit --config drizzle.config.local.ts studio"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "catalog:",
+    "@opennextjs/cloudflare": "catalog:",
+    "@paralleldrive/cuid2": "catalog:",
+    "@trpc/server": "catalog:",
+    "better-sqlite3": "catalog:",
+    "drizzle-orm": "catalog:",
+    "next-auth": "catalog:",
+    "resend": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@quotum/app-types": "workspace:^",
+    "@quotum/tsconfig": "workspace:^",
+    "drizzle-kit": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}

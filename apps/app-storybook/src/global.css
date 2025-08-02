@@ -1,0 +1,30 @@
+@import '@quotum/tailwindcss/tailwindcss.css';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    @apply bg-white text-black;
+    color-scheme: light;
+  }
+
+  :root[data-theme='dark'] {
+    @apply bg-neutral-900 text-neutral-50;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
