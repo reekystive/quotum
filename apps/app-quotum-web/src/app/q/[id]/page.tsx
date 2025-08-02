@@ -49,7 +49,7 @@ export default function QuotePage() {
             rel="noopener noreferrer"
             className="text-sm text-blue-600 hover:underline dark:text-blue-400"
           >
-            View Original
+            Read original
           </a>
         </div>
       </div>
