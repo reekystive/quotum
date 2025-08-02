@@ -20,7 +20,8 @@ export const createTrpcClient = () => {
             // add a delay to the request to simulate a slow network
             await new Promise((resolve) => setTimeout(resolve, 500));
           }
-          return fetch(...props);
+          // @ts-expect-error type mismatch
+          return globalThis.fetch(...props);
         },
       }),
     ],
@@ -41,7 +42,8 @@ export const trpcClient = api.createClient({
           // add a delay to the request to simulate a slow network
           await new Promise((resolve) => setTimeout(resolve, 500));
         }
-        return fetch(...props);
+        // @ts-expect-error type mismatch
+        return globalThis.fetch(...props);
       },
     }),
   ],
