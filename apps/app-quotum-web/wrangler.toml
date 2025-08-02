@@ -32,8 +32,8 @@ migrations_dir = "../../apps/app-quotum-server/drizzle"
 
 # Environment Variables
 # https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
-# [vars]
-# API_URL = "https://dev-api.example.com"
+[vars]
+SERVER_BASE_URL = "https://quotum-dev.reekystive.workers.dev"
 
 # Static Assets
 # https://developers.cloudflare.com/workers/static-assets/binding/
@@ -58,8 +58,8 @@ binding = "D1"
 database_name = "quotum-prod"
 database_id = "11844de3-fc0e-4375-ab3a-636dca28f8ce"
 
-# [env.production.vars]
-# API_URL = "https://api.example.com"
+[env.production.vars]
+SERVER_BASE_URL = "https://quotum.reekystive.workers.dev"
 
 # Note: Use secrets to store sensitive data.
 # https://developers.cloudflare.com/workers/configuration/secrets/
@@ -72,3 +72,6 @@ name = "quotum-staging"
 binding = "D1"
 database_name = "quotum-staging"
 database_id = "edd8ab2f-5abd-4a08-a779-15927e5dfee6"
+
+[env.staging.vars]
+SERVER_BASE_URL = "https://quotum-staging.reekystive.workers.dev"
