@@ -1,94 +1,65 @@
-'use client';
-
-import { api } from '#src/services/trpc-client.ts';
+import { trpc } from '#src/services/trpc-client.ts';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
 import Link from 'next/link';
 
-export default function QuotesListPage() {
-  const { data: quotes, isLoading, error } = api.quoteList.useQuery();
+export default async function QuotesListPage() {
+  let quotes: Quote[] = [];
+  let error: Error | null = null;
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-900">
-        <div className="text-gray-600 dark:text-gray-400">Loading quotes...</div>
-      </div>
-    );
+  try {
+    quotes = await trpc.quoteList.query();
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      error = err;
+    } else {
+      error = new Error('Failed to load quotes', { cause: err });
+    }
   }
 
   if (error) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-900">
-        <div className="text-center">
-          <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">Error Loading Quotes</h1>
-          <p className="text-gray-600 dark:text-gray-400">Something went wrong while loading the quotes.</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!quotes || quotes.length === 0) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-white dark:bg-gray-900">
-        <div className="text-center">
-          <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">No Quotes Found</h1>
-          <p className="mb-6 text-gray-600 dark:text-gray-400">There are no quotes to display yet.</p>
-          <Link href="/debug" className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-            Create Your First Quote
-          </Link>
-        </div>
-      </div>
-    );
+    return 'Failed to load quotes';
   }
 
   return (
-    <div className="min-h-screen bg-white p-8 dark:bg-gray-900">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">All Quotes</h1>
-          <Link href="/" className="text-blue-600 hover:underline dark:text-blue-400">
-            ← Back to Home
-          </Link>
-        </div>
+    <main className="mx-auto flex min-h-svh max-w-2xl flex-col items-stretch justify-center px-2 pb-8">
+      <h1 className="flex flex-row items-center justify-start self-start pb-4 pt-16 font-serif text-2xl text-neutral-900 dark:text-white">
+        <Link href="/" className="font-serif text-2xl text-neutral-900 dark:text-white">
+          Quotum
+        </Link>
+        <span className="px-2 text-neutral-600 dark:text-neutral-400">/</span>
+        <span className="text-neutral-600 dark:text-neutral-400">All quotes</span>
+      </h1>
 
-        <div className="space-y-6">
-          {quotes.map((quote: Quote) => (
-            <div
-              key={quote.id}
-              className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
-            >
-              <Link href={`/quote/${quote.id}`} className="block hover:opacity-80">
-                <blockquote className="mb-4 font-serif text-lg leading-relaxed text-gray-900 dark:text-white">
-                  "{quote.content}"
-                </blockquote>
-                <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
-                  <div>
-                    <div className="font-medium">{quote.title}</div>
-                    <div className="truncate">
-                      <a
-                        href={quote.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline dark:text-blue-400"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {quote.url}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div>ID: {quote.id.replace('quote-', '')}</div>
-                    <div>{new Date(quote.createdAt).toLocaleDateString()}</div>
-                  </div>
-                </div>
-              </Link>
+      <div className="flex flex-col items-stretch gap-2">
+        {quotes.map((quote: Quote) => (
+          <div key={quote.id} className="px-4 py-3">
+            <blockquote className="font-serif text-lg leading-relaxed text-neutral-900 dark:text-white">
+              <span className="select-none pr-1 align-bottom text-4xl">&ldquo;</span>
+              <span className="text-lg">{quote.content}</span>
+              <span className="select-none pl-1 align-top text-4xl">&rdquo;</span>
+            </blockquote>
+
+            <div className="flex flex-col items-stretch gap-1 text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="font-medium">
+                <Link
+                  href={quote.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:underline dark:text-blue-300"
+                >
+                  View original
+                </Link>
+
+                <span className="select-none px-0.5 align-middle font-extrabold"> &middot; </span>
+
+                <span className="text-neutral-600 dark:text-neutral-400">{quote.title}</span>
+              </div>
+
+              <div>Created at {new Date(quote.createdAt).toLocaleString()}</div>
             </div>
-          ))}
-        </div>
-
-        {quotes.length >= 1000 && (
-          <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">Showing first 1000 quotes</div>
-        )}
+          </div>
+        ))}
       </div>
-    </div>
+    </main>
   );
 }
