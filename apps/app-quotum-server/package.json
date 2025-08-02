@@ -50,6 +50,7 @@
     "@trpc/server": "catalog:",
     "better-sqlite3": "catalog:",
     "drizzle-orm": "catalog:",
+    "nanoid": "catalog:",
     "next-auth": "catalog:",
     "resend": "catalog:",
     "zod": "catalog:"
