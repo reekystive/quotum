@@ -35,11 +35,11 @@
     "test:update": "vitest run --update",
     "test:watch": "vitest --watch",
     "db:generate": "drizzle-kit generate",
-    "db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
-    "db:studio:dev": "NODE_ENV=drizzle-development drizzle-kit studio",
     "db:generate:local": "drizzle-kit --config drizzle.config.local.ts generate",
+    "db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
     "db:migrate:local": "drizzle-kit --config drizzle.config.local.ts migrate",
     "db:push:local": "drizzle-kit --config drizzle.config.local.ts push",
+    "db:studio:dev": "NODE_ENV=drizzle-development drizzle-kit studio",
     "db:studio:local": "drizzle-kit --config drizzle.config.local.ts studio"
   },
   "dependencies": {
