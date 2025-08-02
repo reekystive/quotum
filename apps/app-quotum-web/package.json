@@ -27,13 +27,13 @@
     "predeploy:dev": "pnpm run build:opennext",
     "deploy:dev": "wrangler deploy",
     "typegen:cloudflare": "wrangler types --env-interface CloudflareEnv ../../packages/app-types/quotum-cloudflare.d.ts",
-    "db:migrate:local:list": "wrangler d1 migrations apply quotum-dev --local",
-    "db:migrate:local:apply": "wrangler d1 migrations apply quotum-dev --local"
+    "db:wrangler:migrate:local:list": "wrangler d1 migrations apply quotum-dev --local",
+    "db:wrangler:migrate:local:apply": "wrangler d1 migrations apply quotum-dev --local"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "catalog:",
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
-    "@opennextjs/cloudflare": "catalog:",
     "@radix-ui/react-dropdown-menu": "catalog:",
     "@radix-ui/react-slot": "catalog:",
     "@react-hookz/web": "catalog:",
@@ -41,6 +41,7 @@
     "@simplewebauthn/server": "catalog:",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
+    "@trpc/react-query": "catalog:",
     "@trpc/server": "catalog:",
     "class-variance-authority": "catalog:",
     "js-cookie": "catalog:",
@@ -55,10 +56,10 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "@quotum/app-trpc-server": "workspace:^",
     "@quotum/app-types": "workspace:^",
     "@quotum/tsconfig": "workspace:^",
-    "@playwright/test": "catalog:",
     "@tailwindcss/postcss": "catalog:",
     "@types/js-cookie": "catalog:",
     "@types/node": "catalog:",

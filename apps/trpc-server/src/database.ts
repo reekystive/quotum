@@ -1,42 +1,48 @@
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
-import { usersTable } from './db/schema.js';
+import { quotesTable } from './db/schema.js';
 import { getD1Database } from './services/d1.js';
 
-export const userSchema = z.object({
+export const quoteSchema = z.object({
   id: z.string(),
-  name: z.string(),
+  content: z.string(),
+  title: z.string(),
+  url: z.string(),
+  createdAt: z.number(),
 });
 
-export type User = z.infer<typeof userSchema>;
+export type Quote = z.infer<typeof quoteSchema>;
 
 export const db = {
-  user: {
-    findMany: async () => {
-      const d1Database = await getD1Database();
-      const result = await d1Database.select().from(usersTable).limit(1000);
-      return result.map((row) => userSchema.parse(row));
-    },
-
+  quote: {
     findById: async (id: string) => {
       const d1Database = await getD1Database();
-      const result = await d1Database.select().from(usersTable).where(eq(usersTable.id, id)).limit(1);
-      return result.length > 0 ? userSchema.parse(result[0]) : null;
+      const result = await d1Database.select().from(quotesTable).where(eq(quotesTable.id, id)).limit(1);
+      if (result.length > 0) {
+        const row = result[0];
+        if (!row) return null;
+        return quoteSchema.parse({
+          ...row,
+          createdAt:
+            typeof row.createdAt === 'number' ? row.createdAt : new Date(row.createdAt as string | Date).getTime(),
+        });
+      }
+      return null;
     },
 
-    create: async (data: { name: string }) => {
+    create: async (data: { content: string; title: string; url: string }) => {
       const d1Database = await getD1Database();
-      const result = await d1Database
-        .insert(usersTable)
-        .values({ name: data.name, email: 'hello@example.com' })
-        .returning();
-      return result.length > 0 ? userSchema.parse(result[0]) : null;
-    },
-
-    delete: async (id: string) => {
-      const d1Database = await getD1Database();
-      await d1Database.delete(usersTable).where(eq(usersTable.id, id));
-      return Promise.resolve();
+      const result = await d1Database.insert(quotesTable).values(data).returning();
+      if (result.length > 0) {
+        const row = result[0];
+        if (!row) return null;
+        return quoteSchema.parse({
+          ...row,
+          createdAt:
+            typeof row.createdAt === 'number' ? row.createdAt : new Date(row.createdAt as string | Date).getTime(),
+        });
+      }
+      return null;
     },
   },
 };

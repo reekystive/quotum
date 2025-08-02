@@ -40,7 +40,7 @@ jobs:
         working-directory: apps/app-quotum-web
 
       - name: Prepare local database
-        run: pnpm run db:migrate:local:apply
+        run: pnpm run db:wrangler:migrate:local:apply
         working-directory: apps/app-quotum-web
 
       - name: Install Playwright browsers

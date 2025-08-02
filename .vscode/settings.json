@@ -5,7 +5,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "typescript.experimental.useTsgo": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.experimental.useTsgo": false,
   "typescript.native-preview.tsdk": "node_modules/@typescript/native-preview",
   "files.associations": {
     "*.css": "tailwindcss",

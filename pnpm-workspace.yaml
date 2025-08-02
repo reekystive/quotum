@@ -80,6 +80,7 @@ catalog:
   '@simplewebauthn/browser': ^9.0.1
   '@simplewebauthn/server': ^9.0.2
   '@typescript/native-preview': 7.0.0-dev.20250801.1
+  '@trpc/react-query': ^11.4.3
 
 catalogMode: strict
 

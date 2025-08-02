@@ -38,6 +38,7 @@
     "db:generate:local": "drizzle-kit --config drizzle.config.local.ts generate",
     "db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
     "db:migrate:local": "drizzle-kit --config drizzle.config.local.ts migrate",
+    "db:push:dev": "NODE_ENV=drizzle-development drizzle-kit push",
     "db:push:local": "drizzle-kit --config drizzle.config.local.ts push",
     "db:studio:dev": "NODE_ENV=drizzle-development drizzle-kit studio",
     "db:studio:local": "drizzle-kit --config drizzle.config.local.ts studio"

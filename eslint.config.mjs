@@ -85,6 +85,7 @@ const eslintConfig = [
       ...reactPlugin.configs['jsx-runtime'].rules,
       ...reactHooksPlugin.configs['recommended-latest'].rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react/no-unescaped-entities': 'off',
     },
     settings: {
       react: { version: '19.1.0' },
