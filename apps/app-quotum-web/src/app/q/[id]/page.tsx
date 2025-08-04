@@ -1,3 +1,4 @@
+import { delayInLocalDevOnly } from '#src/utils/debug-delay.ts';
 import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
 import { createCaller } from '@quotum/app-quotum-server/shared';
 import { Quote } from '@quotum/app-quotum-server/shared-types';
@@ -17,6 +18,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
   let error: Error | null = null;
 
   try {
+    await delayInLocalDevOnly();
     quote = await createCaller({}).quoteById(id);
   } catch (err: unknown) {
     console.error('Failed to load quote', err);
