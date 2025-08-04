@@ -3,7 +3,6 @@ import reactLogo from '#src/assets/react.svg';
 import viteLogo from '#src/assets/vite.svg';
 import { HelloWorld } from '#src/components/hello-world.js';
 import { FC } from 'react';
-import './app.css';
 
 export const App: FC = () => {
   return (

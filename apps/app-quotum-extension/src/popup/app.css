@@ -1,23 +1,35 @@
 @import '@quotum/tailwindcss/tailwindcss.css';
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) img {
-    animation: logo-spin infinite 20s linear;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    @media (prefers-color-scheme: light) {
+      color: #213547;
+      background-color: #ffffff;
+    }
+
+    width: 300px;
+    height: 200px;
+  }
+
+  body {
+    @apply w-full h-full overflow-clip;
+  }
+
+  #root {
+    @apply w-full h-full overflow-clip;
   }
 }
