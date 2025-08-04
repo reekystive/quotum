@@ -111,7 +111,7 @@ jobs:
 
   build-extension:
     runs-on: ubuntu-latest
-    name: Build app-quotum-web
+    name: Build app-quotum-extension
 
     steps:
       - name: Checkout repository
@@ -142,7 +142,7 @@ jobs:
         with:
           name: quotum-extension-dist
           path: |
-            apps/app-quotum-extension/*.zip
+            apps/app-quotum-extension/release/*.zip
           if-no-files-found: error
           include-hidden-files: true
 
