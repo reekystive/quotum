@@ -35,13 +35,15 @@
     "test:update": "vitest run --update",
     "test:watch": "vitest --watch",
     "db:generate": "drizzle-kit generate",
-    "db:generate:local": "drizzle-kit --config drizzle.config.local.ts generate",
-    "db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
-    "db:migrate:local": "drizzle-kit --config drizzle.config.local.ts migrate",
+    "UNUSED:db:generate:local": "drizzle-kit --config drizzle.config.local.ts generate",
+    "UNUSED:db:migrate:dev": "NODE_ENV=drizzle-development drizzle-kit migrate",
+    "UNUSED:db:migrate:local": "drizzle-kit --config drizzle.config.local.ts migrate",
     "db:push:dev": "NODE_ENV=drizzle-development drizzle-kit push",
     "db:push:local": "drizzle-kit --config drizzle.config.local.ts push",
     "db:studio:dev": "NODE_ENV=drizzle-development drizzle-kit studio",
-    "db:studio:local": "drizzle-kit --config drizzle.config.local.ts studio"
+    "db:studio:local": "drizzle-kit --config drizzle.config.local.ts studio",
+    "DANGEROUS:db:migrate:production": "NODE_ENV=drizzle-production drizzle-kit migrate",
+    "DANGEROUS:db:studio:production": "NODE_ENV=drizzle-production drizzle-kit studio"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "catalog:",
