@@ -71,7 +71,7 @@ jobs:
       - name: Run tests
         run: pnpm -w run test:packages
 
-  build:
+  build-web:
     runs-on: ubuntu-latest
     name: Build app-quotum-web
 
@@ -87,7 +87,7 @@ jobs:
       - name: Setup cache
         uses: ./.github/actions/setup-cache
         with:
-          restore-key-prefix: 'cache-build'
+          restore-key-prefix: 'cache-build-web'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -109,10 +109,47 @@ jobs:
           if-no-files-found: error
           include-hidden-files: true
 
+  build-extension:
+    runs-on: ubuntu-latest
+    name: Build app-quotum-web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node.js with corepack
+        uses: ./.github/actions/setup-node
+
+      - name: Setup cache
+        uses: ./.github/actions/setup-cache
+        with:
+          restore-key-prefix: 'cache-build-extension'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Pre-build dependencies
+        run: pnpm -w --workspace-concurrency -1 --filter "@quotum/app-quotum-extension..." run build:tsc
+
+      - name: Build extension
+        run: pnpm run build
+        working-directory: apps/app-quotum-extension
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: quotum-extension-dist
+          path: |
+            apps/app-quotum-extension/*.zip
+          if-no-files-found: error
+          include-hidden-files: true
+
   deploy-main:
     runs-on: ubuntu-latest
     name: Deploy to Cloudflare Workers
-    needs: [lint, test, build]
+    needs: [lint, test, build-web]
     if: contains(fromJson('["refs/heads/main", "refs/heads/dev"]'), github.ref) && github.event_name == 'push'
 
     steps:
