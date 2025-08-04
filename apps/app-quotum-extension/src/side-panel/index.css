@@ -31,8 +31,10 @@ h1 {
 }
 
 button {
-  @apply rounded-lg border border-transparent px-5 py-2.5 text-base font-medium font-inherit cursor-pointer transition-colors duration-250;
+  @apply rounded-lg border border-transparent px-5 py-2.5 text-base font-medium cursor-pointer;
   background-color: #1a1a1a;
+  font-family: inherit;
+  transition: border-color 0.25s;
 }
 
 button:hover {
