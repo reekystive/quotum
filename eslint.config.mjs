@@ -2,6 +2,7 @@ import cspellPlugin from '@cspell/eslint-plugin';
 import eslintJsPlugin from '@eslint/js';
 import next from '@next/eslint-plugin-next';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss';
 import prettierPlugin from 'eslint-plugin-prettier';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
@@ -73,6 +74,7 @@ const eslintConfig = [
       'react-hooks': reactHooksPlugin,
       'react-refresh': reactRefreshPlugin,
       react: reactPlugin,
+      'better-tailwindcss': eslintPluginBetterTailwindcss,
     },
     rules: {
       ...reactPlugin.configs.recommended.rules,
@@ -80,9 +82,14 @@ const eslintConfig = [
       ...reactHooksPlugin.configs['recommended-latest'].rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'react/no-unescaped-entities': 'off',
+      ...eslintPluginBetterTailwindcss.configs['recommended-warn']?.rules,
+      ...eslintPluginBetterTailwindcss.configs['recommended-error']?.rules,
     },
     settings: {
       react: { version: '19.1.0' },
+      'better-tailwindcss': {
+        entryPoint: './packages/tailwindcss/tailwindcss.css',
+      },
     },
     files: TS_FILES,
   },
@@ -113,6 +120,11 @@ const eslintConfig = [
       .../** @type {Record<string, import('eslint').Linter.RuleEntry>} */ (next.flatConfig.coreWebVitals.rules),
     },
     files: NEXTJS_FILES,
+    settings: {
+      next: {
+        rootDir: ['./apps/app-quotum-web'],
+      },
+    },
   },
 
   // config for javascript/typescript code
@@ -130,6 +142,7 @@ const eslintConfig = [
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-confusing-void-expression': 'off',
+      'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 120 }],
     },
     files: TS_FILES,
   },

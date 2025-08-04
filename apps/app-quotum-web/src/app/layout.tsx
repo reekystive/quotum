@@ -43,7 +43,13 @@ export default async function Layout({
   const theme = (await getThemeFromServerCookie()) satisfies 'light' | 'dark' | 'system' | null;
   return (
     <html lang="en" suppressHydrationWarning data-theme={theme ?? 'system'}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`
+          ${geistSans.variable}
+          ${geistMono.variable}
+          antialiased
+        `}
+      >
         <ThemeProvider themeFromCookie={theme}>
           <RootProviders>
             <RootLayout>{children}</RootLayout>

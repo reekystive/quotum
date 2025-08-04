@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const SvgClipPath: FC = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4">
+    <div className={`flex min-h-screen flex-col items-center justify-center gap-4`}>
       <svg className="absolute" width="0" height="0" viewBox="0 0 1 1">
         <defs>
           <clipPath id="clip-path-user" clipPathUnits="userSpaceOnUse">
@@ -42,11 +42,21 @@ export const SvgClipPath: FC = () => {
       </svg>
 
       <div className="size-20 border">
-        <div className="size-full bg-red-200 [clip-path:url(#clip-path-object)]"></div>
+        <div
+          className={`
+            size-full bg-red-200
+            [clip-path:url(#clip-path-object)]
+          `}
+        ></div>
       </div>
 
       <div className="size-20 border">
-        <div className="size-full bg-red-200 [clip-path:url(#clip-path-user)]"></div>
+        <div
+          className={`
+            size-full bg-red-200
+            [clip-path:url(#clip-path-user)]
+          `}
+        ></div>
       </div>
     </div>
   );
