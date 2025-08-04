@@ -1,5 +1,6 @@
 import { delayInLocalDevOnly } from '#src/utils/debug-delay.ts';
 import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { createCaller } from '@quotum/app-quotum-server/shared';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
 import { ExternalLink } from 'lucide-react';
@@ -9,6 +10,9 @@ import 'server-only';
 export default async function QuotesListPage() {
   let quotes: Quote[] = [];
   let error: Error | null = null;
+
+  const cfContext = getCloudflareContext({ async: true });
+  const timezone = (await cfContext).cf?.timezone;
 
   try {
     await delayInLocalDevOnly();
@@ -86,7 +90,7 @@ export default async function QuotesListPage() {
                 <span>{quote.title}</span>
               </div>
 
-              <div>Created at {new Date(quote.createdAt).toLocaleString()}</div>
+              <div>Created at {new Date(quote.createdAt).toLocaleString(timezone)}</div>
             </div>
           </div>
         ))}
