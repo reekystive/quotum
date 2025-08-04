@@ -24,6 +24,8 @@ const STORYBOOK_MAIN_FILES = ['**/.storybook/main.{,c,m}{j,t}s'];
 /** @type {string[]} */
 const NEXTJS_FILES = ['apps/app-quotum-web/src/**/{,.}*.{,c,m}{j,t}s{,x}'];
 
+const tailwindCssStylesheetPath = new URL('./packages/tailwindcss/tailwindcss.css', import.meta.url);
+
 const typescriptConfigs = /** @type {import('eslint').Linter.Config[]} */ (
   tsEslint.config({
     plugins: {
@@ -88,7 +90,7 @@ const eslintConfig = [
     settings: {
       react: { version: '19.1.0' },
       'better-tailwindcss': {
-        entryPoint: './packages/tailwindcss/tailwindcss.css',
+        entryPoint: tailwindCssStylesheetPath.pathname,
       },
     },
     files: TS_FILES,
