@@ -18,6 +18,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
   try {
     quote = await trpc.quoteById.query(id);
   } catch (err: unknown) {
+    console.error('Failed to load quote', err);
     if (err instanceof Error) {
       error = err;
     } else {
@@ -26,11 +27,21 @@ export default async function QuotePage({ params }: QuotePageProps) {
   }
 
   if (error) {
-    return 'Failed to load quotes';
+    return (
+      <main className="flex min-h-svh flex-col items-center justify-center p-2">
+        <h1 className="font-serif text-2xl text-neutral-900 dark:text-white">Failed to load quote</h1>
+        <div className="h-2" />
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">{error.toString()}</p>
+      </main>
+    );
   }
 
   if (!quote) {
-    return 'Quote not found';
+    return (
+      <main className="flex min-h-svh flex-col items-center justify-center p-2">
+        <h1 className="font-serif text-2xl text-neutral-900 dark:text-white">Quote not found</h1>
+      </main>
+    );
   }
 
   return (

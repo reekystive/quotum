@@ -11,6 +11,7 @@ export default async function QuotesListPage() {
   try {
     quotes = await trpc.quoteList.query();
   } catch (err: unknown) {
+    console.error('Failed to load quotes', err);
     if (err instanceof Error) {
       error = err;
     } else {
@@ -19,11 +20,21 @@ export default async function QuotesListPage() {
   }
 
   if (error) {
-    return 'Failed to load quotes';
+    return (
+      <main className="flex min-h-svh flex-col items-center justify-center p-2">
+        <h1 className="font-serif text-2xl text-neutral-900 dark:text-white">Failed to load quotes</h1>
+        <div className="h-2" />
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">{error.toString()}</p>
+      </main>
+    );
   }
 
   if (quotes.length === 0) {
-    return 'No quotes found';
+    return (
+      <main className="flex min-h-svh flex-col items-center justify-center p-2">
+        <h1 className="font-serif text-2xl text-neutral-900 dark:text-white">No quotes found</h1>
+      </main>
+    );
   }
 
   return (
