@@ -1,4 +1,4 @@
-import { trpc } from '#src/services/trpc-client.ts';
+import { trpcServerCaller } from '#src/services/trpc-client.ts';
 import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
 import { ExternalLink } from 'lucide-react';
@@ -9,7 +9,7 @@ export default async function QuotesListPage() {
   let error: Error | null = null;
 
   try {
-    quotes = await trpc.quoteList.query();
+    quotes = await trpcServerCaller.quoteList();
   } catch (err: unknown) {
     console.error('Failed to load quotes', err);
     if (err instanceof Error) {

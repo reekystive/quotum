@@ -1,4 +1,5 @@
 import { trpcEndpoint } from '#src/utils/urls.ts';
+import { createCaller } from '@quotum/app-quotum-server/shared';
 import type { AppRouter } from '@quotum/app-quotum-server/shared-types';
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 import { createTRPCReact, type CreateTRPCReact } from '@trpc/react-query';
@@ -46,3 +47,5 @@ export const trpcClient = api.createClient({
     }),
   ],
 });
+
+export const trpcServerCaller = createCaller({});
