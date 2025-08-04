@@ -4,6 +4,7 @@ import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { createCaller } from '@quotum/app-quotum-server/shared';
 import { Quote } from '@quotum/app-quotum-server/shared-types';
 import { ExternalLink } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import 'server-only';
 
@@ -11,6 +12,64 @@ interface QuotePageProps {
   params: Promise<{
     id: string;
   }>;
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function generateMetadata({ params }: QuotePageProps): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const quote = await createCaller({}).quoteById(id);
+
+    if (!quote) {
+      return {
+        title: 'Quote not found - Quotum',
+        description: 'The requested quote could not be found.',
+      };
+    }
+
+    const truncatedContent = quote.content.length > 160 ? quote.content.substring(0, 157) + '...' : quote.content;
+
+    const title = `"${truncatedContent}" - ${quote.title}`;
+    const description = `A quote from ${quote.title}: "${truncatedContent}"`;
+    const url = `https://quotum.me/q/${id}`;
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url,
+        siteName: 'Quotum',
+        type: 'article',
+        images: [
+          {
+            url: `/api/og/quote/${id}`,
+            width: 1200,
+            height: 630,
+            alt: `Quote from ${quote.title}`,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [`/api/og/quote/${id}`],
+        site: '@quotum',
+      },
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
+  } catch {
+    return {
+      title: 'Quote - Quotum',
+      description: 'Share and discover meaningful quotes.',
+    };
+  }
 }
 
 export default async function QuotePage({ params }: QuotePageProps) {
