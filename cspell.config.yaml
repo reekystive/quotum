@@ -1,6 +1,7 @@
 words:
   - avenir
   - clsx
+  - crxjs
   - cuid
   - dotenv
   - dotenvx
@@ -24,6 +25,7 @@ words:
   - quotum
   - randomblob
   - reekystive
+  - rgba
   - shadcn
   - simplewebauthn
   - tanstack

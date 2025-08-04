@@ -1,0 +1,17 @@
+diff --git a/dist/types/index.d.ts b/dist/types/index.d.mts
+similarity index 100%
+rename from dist/types/index.d.ts
+rename to dist/types/index.d.mts
+diff --git a/package.json b/package.json
+index f6beba0f79bdef8480bcfe6ad9b14b0ceadb0eef..e18d46831ee311f0c1c259346d30af58b4a76b27 100644
+--- a/package.json
++++ b/package.json
+@@ -9,7 +9,7 @@
+     ".": {
+       "import": "./dist/esm/index.mjs",
+       "require": "./dist/cjs/index.js",
+-      "types": "./dist/types/index.d.ts",
++      "types": "./dist/types/index.d.mts",
+       "default": "./dist/esm/index.mjs"
+     }
+   },

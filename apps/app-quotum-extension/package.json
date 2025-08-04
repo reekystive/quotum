@@ -1,0 +1,44 @@
+{
+  "name": "@quotum/app-quotum-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#src/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --build tsconfig.json && vite build",
+    "build:tsc": "tsc --build tsconfig.json",
+    "preview": "vite preview",
+    "lint:eslint": "eslint . --cache --cache-strategy content --cache-location ./node_modules/.cache/eslint/eslintcache.json --max-warnings 0 --report-unused-disable-directives",
+    "lint:tsc": "tsc --build tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "catalog:",
+    "@playwright/test": "catalog:",
+    "@quotum/app-quotum-server": "workspace:^",
+    "@quotum/app-types": "workspace:^",
+    "@quotum/tsconfig": "workspace:^",
+    "@quotum/utils": "workspace:^",
+    "@tailwindcss/postcss": "catalog:",
+    "@types/chrome": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitejs/plugin-react-swc": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-zip-pack": "catalog:",
+    "vitest": "catalog:"
+  }
+}
