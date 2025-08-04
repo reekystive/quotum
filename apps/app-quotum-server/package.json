@@ -55,6 +55,7 @@
     "nanoid": "catalog:",
     "next-auth": "catalog:",
     "resend": "catalog:",
+    "server-only": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

@@ -1,8 +1,9 @@
-import { trpcServerCaller } from '#src/services/trpc-client.ts';
 import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
+import { createCaller } from '@quotum/app-quotum-server/shared';
 import { Quote } from '@quotum/app-quotum-server/shared-types';
 import { ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import 'server-only';
 
 interface QuotePageProps {
   params: Promise<{
@@ -16,7 +17,7 @@ export default async function QuotePage({ params }: QuotePageProps) {
   let error: Error | null = null;
 
   try {
-    quote = await trpcServerCaller.quoteById(id);
+    quote = await createCaller({}).quoteById(id);
   } catch (err: unknown) {
     console.error('Failed to load quote', err);
     if (err instanceof Error) {

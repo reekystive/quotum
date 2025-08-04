@@ -1,2 +1,3 @@
-export { createCaller } from './caller.js';
-export { appRouter } from './router.js';
+import 'server-only';
+
+export { appRouter, createCaller } from './router.js';

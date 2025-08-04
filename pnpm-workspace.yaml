@@ -82,6 +82,7 @@ catalog:
   '@typescript/native-preview': 7.0.0-dev.20250801.1
   '@trpc/react-query': ^11.4.3
   nanoid: ^5.1.5
+  server-only: 0.0.1
 
 catalogMode: strict
 
