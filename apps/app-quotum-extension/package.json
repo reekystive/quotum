@@ -18,17 +18,17 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@quotum/tailwindcss": "workspace:^",
+    "@quotum/utils": "workspace:^",
     "react": "catalog:",
     "react-dom": "catalog:"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "catalog:",
     "@playwright/test": "catalog:",
-    "@quotum/app-quotum-server": "workspace:^",
     "@quotum/app-types": "workspace:^",
     "@quotum/tsconfig": "workspace:^",
-    "@quotum/utils": "workspace:^",
-    "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/vite": "catalog:",
     "@types/chrome": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",

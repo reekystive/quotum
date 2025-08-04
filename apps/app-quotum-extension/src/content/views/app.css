@@ -1,3 +1,5 @@
+@import '@quotum/tailwindcss/tailwindcss.css';
+
 .popup-container {
   position: fixed;
   right: 0;
