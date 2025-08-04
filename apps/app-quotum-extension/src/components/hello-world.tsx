@@ -7,7 +7,7 @@ export const HelloWorld: FC<{ msg: string }> = ({ msg }) => {
     <>
       <h1>{msg}</h1>
 
-      <div className="card">
+      <div className="p-8">
         <button type="button" onClick={() => setCount(count + 1)}>
           count is {count}
         </button>
@@ -25,7 +25,7 @@ export const HelloWorld: FC<{ msg: string }> = ({ msg }) => {
         , the official starter
       </p>
 
-      <p className="read-the-docs">Click on the Vite, React and CRXJS logos to learn more</p>
+      <p className="text-gray-500">Click on the Vite, React and CRXJS logos to learn more</p>
     </>
   );
 };

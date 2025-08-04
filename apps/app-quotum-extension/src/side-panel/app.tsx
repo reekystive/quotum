@@ -9,13 +9,35 @@ export const App: FC = () => {
   return (
     <div>
       <a href="https://vite.dev" target="_blank" rel="noreferrer">
-        <img src={viteLogo} className="logo" alt="Vite logo" />
+        <img
+          src={viteLogo}
+          className={`
+            h-24 p-6 transition-[filter] duration-300 will-change-[filter]
+            hover:drop-shadow-[0_0_2em_#646cffaa]
+          `}
+          alt="Vite logo"
+        />
       </a>
       <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        <img
+          src={reactLogo}
+          className={`
+            h-24 p-6 transition-[filter] duration-300 will-change-[filter]
+            hover:drop-shadow-[0_0_2em_#61dafbaa]
+            motion-safe:animate-spin
+          `}
+          alt="React logo"
+        />
       </a>
       <a href="https://crxjs.dev/vite-plugin" target="_blank" rel="noreferrer">
-        <img src={crxLogo} className="logo crx" alt="crx logo" />
+        <img
+          src={crxLogo}
+          className={`
+            h-24 p-6 transition-[filter] duration-300 will-change-[filter]
+            hover:drop-shadow-[0_0_2em_#f2bae4aa]
+          `}
+          alt="crx logo"
+        />
       </a>
       <HelloWorld msg="Vite + React + CRXJS" />
     </div>
