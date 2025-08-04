@@ -90,7 +90,12 @@ export default async function QuotesListPage() {
                 <span>{quote.title}</span>
               </div>
 
-              <div>Created at {new Date(quote.createdAt).toLocaleString(timezone)}</div>
+              <div>
+                Created at{' '}
+                {new Date(quote.createdAt).toLocaleString(undefined, {
+                  timeZone: timezone,
+                })}
+              </div>
             </div>
           </div>
         ))}

@@ -80,7 +80,10 @@ export default async function QuotePage({ params }: QuotePageProps) {
       <div className="h-2"></div>
 
       <div className="self-center text-sm text-neutral-600 dark:text-neutral-400">
-        Created at {new Date(quote.createdAt).toLocaleString(timezone)}
+        Created at{' '}
+        {new Date(quote.createdAt).toLocaleString(undefined, {
+          timeZone: timezone,
+        })}
       </div>
     </main>
   );
