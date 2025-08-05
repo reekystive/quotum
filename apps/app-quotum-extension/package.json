@@ -24,6 +24,7 @@
     "@trpc/client": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "text-fragments-polyfill": "catalog:",
     "webextension-polyfill": "catalog:",
     "zod": "catalog:"
   },

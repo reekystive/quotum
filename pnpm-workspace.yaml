@@ -87,6 +87,7 @@ catalog:
   eslint-plugin-better-tailwindcss: ^3.7.3
   webextension-polyfill: ^0.12.0
   '@types/webextension-polyfill': ^0.12.3
+  text-fragments-polyfill: ^6.4.1
 
 catalogMode: strict
 
