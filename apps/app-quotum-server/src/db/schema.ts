@@ -11,6 +11,10 @@ export const quotesTable = sqliteTable('quotes', {
   content: text('content').notNull(),
   title: text('title').notNull(),
   url: text('url').notNull(),
+  anchorTextStart: text('anchor_text_start'),
+  anchorTextEnd: text('anchor_text_end'),
+  anchorPrefix: text('anchor_prefix'),
+  anchorSuffix: text('anchor_suffix'),
   createdAt: integer('created_at', { mode: 'timestamp_ms' })
     .default(sql`(unixepoch() * 1000)`)
     .notNull(),
