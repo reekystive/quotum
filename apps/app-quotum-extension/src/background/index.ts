@@ -1,3 +1,6 @@
+import { ExtractedQuoteDataSchema } from '#src/content/functions/extract-quote-types.js';
+import { extractSelectedQuoteFromPage } from '#src/content/functions/extract-quote.js';
+import { trpc } from '#src/services/trpc-client.js';
 import browser from 'webextension-polyfill';
 
 console.log('[Quotum] Background script loaded');
@@ -31,45 +34,39 @@ async function handleCreateQuoteLinkNew(tabId: number): Promise<void> {
     // Inject script to extract quote data from the page
     const [result] = await browser.scripting.executeScript({
       target: { tabId },
-      func: () => {
-        const selection = window.getSelection();
-        if (!selection) {
-          console.error('[Quotum] No selection available');
-          return {
-            status: 'error',
-            message: 'No selection available',
-          };
-        }
-
-        const result = globalThis.generateFragment(selection);
-        if (result.status !== 'success' || !result.fragment) {
-          console.error('[Quotum] No fragment generated');
-          console.error(result);
-          return {
-            status: 'error',
-            message: 'No fragment generated',
-          };
-        }
-
-        const fragment = result.fragment;
-        const prefix = fragment.prefix ? `${encodeURIComponent(fragment.prefix)}-,` : '';
-        const suffix = fragment.suffix ? `,-${encodeURIComponent(fragment.suffix)}` : '';
-        const textStart = encodeURIComponent(fragment.textStart ?? '');
-        const textEnd = fragment.textEnd ? `,${encodeURIComponent(fragment.textEnd)}` : '';
-        const urlWithTextAnchor = new URL(location.href);
-        // https://example.com#:~:text=[prefix-,]textStart[,textEnd][,-suffix]
-        urlWithTextAnchor.hash = `#:~:text=${prefix}${textStart}${textEnd}${suffix}`;
-
-        console.log('[Quotum] Generated fragment:', urlWithTextAnchor.toString());
-
-        return {
-          status: 'success',
-          url: urlWithTextAnchor.toString(),
-        };
-      },
+      func: extractSelectedQuoteFromPage,
     });
 
     console.log('[Quotum] Result:', result);
+
+    // Validate the extracted data using Zod schema
+    const parsedResult = ExtractedQuoteDataSchema.safeParse(result?.result);
+
+    if (!parsedResult.success) {
+      console.error('[Quotum] Invalid extracted data:', parsedResult.error);
+      return;
+    }
+
+    const data = parsedResult.data;
+
+    if (data.status === 'error') {
+      console.error('[Quotum] Error extracting quote:', data.message);
+      return;
+    }
+
+    // Create the quote using the TRPC client
+    const quote = await trpc.quoteCreate.mutate({
+      content: data.selectedText,
+      title: data.pageTitle,
+      url: data.url,
+    });
+
+    console.log('[Quotum] Quote created:', quote);
+    if (quote?.id) {
+      // Redirect to the quote page on the web app
+      const quoteUrl = new URL(`https://quotum.me/q/${quote.id}`);
+      await browser.tabs.create({ url: quoteUrl.toString() });
+    }
   } catch (error) {
     console.error('Error creating quote link:', error);
   }

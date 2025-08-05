@@ -18,6 +18,7 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@quotum/app-quotum-server": "workspace:^",
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
     "@trpc/client": "catalog:",
