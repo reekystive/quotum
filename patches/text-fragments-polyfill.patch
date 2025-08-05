@@ -1,0 +1,14 @@
+diff --git a/package.json b/package.json
+index 171d9ba0cdd80653a2ac4c55db7ab91ef9a34b18..f0ffe0b881c567404c1b63a95264ba5c056f7abf 100644
+--- a/package.json
++++ b/package.json
+@@ -7,8 +7,7 @@
+   "module": "./dist/text-fragments.js",
+   "type": "module",
+   "exports": {
+-    ".": "./dist/text-fragments.js",
+-    "./dist/fragment-generation-utils.js": "./dist/fragment-generation-utils.js",
++    "./fragment-generation-utils": "./src/fragment-generation-utils.js",
+     "./text-fragment-utils": "./src/text-fragment-utils.js",
+     "./package.json": "./package.json"
+   },

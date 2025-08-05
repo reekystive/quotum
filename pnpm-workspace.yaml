@@ -105,3 +105,4 @@ patchedDependencies:
   eslint-plugin-storybook: patches/eslint-plugin-storybook.patch
   next: patches/next.patch
   vite-plugin-zip-pack: patches/vite-plugin-zip-pack.patch
+  text-fragments-polyfill: patches/text-fragments-polyfill.patch

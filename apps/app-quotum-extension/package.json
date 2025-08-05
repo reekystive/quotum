@@ -21,10 +21,10 @@
     "@quotum/app-quotum-server": "workspace:^",
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
+    "@quotum/vendor-wrapper": "workspace:^",
     "@trpc/client": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "text-fragments-polyfill": "catalog:",
     "webextension-polyfill": "catalog:",
     "zod": "catalog:"
   },

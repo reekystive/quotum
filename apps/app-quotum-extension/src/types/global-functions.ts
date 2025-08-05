@@ -1,7 +1,11 @@
-import type { generateFragment } from '#src/vendor-google/fragment-generation-utils.js';
-
-type GenerateFragment = typeof generateFragment;
+import type {
+  generateFragment,
+  GenerateFragmentStatus,
+} from '@quotum/vendor-wrapper/text-fragments-polyfill/fragment-generation-utils';
 
 declare global {
-  var generateFragment: GenerateFragment;
+  var fragmentGenerationUtils: {
+    generateFragment: typeof generateFragment;
+    GenerateFragmentStatus: typeof GenerateFragmentStatus;
+  };
 }

@@ -10,8 +10,8 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
     };
   }
 
-  const result = globalThis.generateFragment(selection);
-  if (result.status !== 'success' || !result.fragment) {
+  const result = globalThis.fragmentGenerationUtils.generateFragment(selection);
+  if (result.status !== globalThis.fragmentGenerationUtils.GenerateFragmentStatus.SUCCESS || !result.fragment) {
     console.error('[Quotum] No fragment generated. result:', result);
     return {
       status: 'error',
@@ -22,7 +22,7 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
   const fragment = result.fragment;
   const prefix = fragment.prefix ? `${encodeURIComponent(fragment.prefix)}-,` : '';
   const suffix = fragment.suffix ? `,-${encodeURIComponent(fragment.suffix)}` : '';
-  const textStart = encodeURIComponent(fragment.textStart ?? '');
+  const textStart = encodeURIComponent(fragment.textStart);
   const textEnd = fragment.textEnd ? `,${encodeURIComponent(fragment.textEnd)}` : '';
   const urlWithTextAnchor = new URL(location.href);
   // https://example.com#:~:text=[prefix-,]textStart[,textEnd][,-suffix]
@@ -35,9 +35,9 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
     selectedText: selection.toString(),
     pageTitle: document.title,
     url: urlWithTextAnchor.toString(),
-    textStart: fragment.textStart ?? '',
-    textEnd: fragment.textEnd ?? '',
-    prefix: fragment.prefix ?? '',
-    suffix: fragment.suffix ?? '',
+    textStart: fragment.textStart,
+    textEnd: fragment.textEnd,
+    prefix: fragment.prefix,
+    suffix: fragment.suffix,
   };
 };

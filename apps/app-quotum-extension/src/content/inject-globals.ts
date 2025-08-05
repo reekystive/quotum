@@ -1,5 +1,11 @@
-import { generateFragment } from '#src/vendor-google/fragment-generation-utils.js';
+import {
+  generateFragment,
+  GenerateFragmentStatus,
+} from '@quotum/vendor-wrapper/text-fragments-polyfill/fragment-generation-utils';
 
 export const injectGlobals = (): void => {
-  globalThis.generateFragment = generateFragment;
+  globalThis.fragmentGenerationUtils = {
+    generateFragment,
+    GenerateFragmentStatus,
+  };
 };
