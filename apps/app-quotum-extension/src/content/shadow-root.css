@@ -1,0 +1,9 @@
+@import '@quotum/tailwindcss/tailwindcss.css';
+
+@source './**/*.{ts,tsx}';
+
+@layer base {
+  #quotum-extension-content-script-mount-node {
+    display: contents;
+  }
+}

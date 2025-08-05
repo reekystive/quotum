@@ -24,4 +24,8 @@ export default defineManifest({
   side_panel: {
     default_path: 'src/side-panel/index.html',
   },
+  options_ui: {
+    open_in_tab: false,
+    page: 'src/options-ui/index.html',
+  },
 });
