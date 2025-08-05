@@ -27,7 +27,7 @@ catalog:
   '@tailwindcss/postcss': ^4.1.11
   '@tailwindcss/vite': ^4.1.8
   '@tanstack/react-query': ^5.81.5
-  '@trpc/client': ^11.4.3
+  '@trpc/client': 11.4.3
   '@trpc/react-query': ^11.4.3
   '@trpc/server': ^11.4.3
   '@types/chrome': ^0.1.1
@@ -83,7 +83,7 @@ catalog:
   vite-plugin-zip-pack: ^1.2.4
   vitest: ^3.2.0
   wrangler: ^4.27.0
-  zod: ^3.25.73
+  zod: 3.25.73
   eslint-plugin-better-tailwindcss: ^3.7.3
   webextension-polyfill: ^0.12.0
   '@types/webextension-polyfill': ^0.12.3

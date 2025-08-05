@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@quotum/tsconfig/tsconfig.node.json",
   "compilerOptions": {
-    "types": ["node"],
+    "types": ["node", "chrome", "webextension-polyfill"],
     "rootDir": ".",
     "outDir": "./node_modules/.cache/tsc-node",
     // https://github.com/microsoft/TypeScript/issues/30925#issuecomment-483371766

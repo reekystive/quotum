@@ -20,6 +20,7 @@
   "dependencies": {
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
+    "@trpc/client": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "webextension-polyfill": "catalog:",
