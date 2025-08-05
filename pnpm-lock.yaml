@@ -96,6 +96,9 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.1.5
       version: 19.1.6
+    '@types/webextension-polyfill':
+      specifier: ^0.12.3
+      version: 0.12.3
     '@typescript/native-preview':
       specifier: 7.0.0-dev.20250801.1
       version: 7.0.0-dev.20250801.1
@@ -231,6 +234,9 @@ catalogs:
     vitest:
       specifier: ^3.2.0
       version: 3.2.0
+    webextension-polyfill:
+      specifier: ^0.12.0
+      version: 0.12.0
     wrangler:
       specifier: ^4.27.0
       version: 4.27.0
@@ -346,6 +352,12 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.1.0(react@19.1.0)
+      webextension-polyfill:
+        specifier: 'catalog:'
+        version: 0.12.0
+      zod:
+        specifier: 'catalog:'
+        version: 3.25.73
     devDependencies:
       '@crxjs/vite-plugin':
         specifier: 'catalog:'
@@ -374,6 +386,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.1.6(@types/react@19.1.9)
+      '@types/webextension-polyfill':
+        specifier: 'catalog:'
+        version: 0.12.3
       '@vitejs/plugin-react-swc':
         specifier: 'catalog:'
         version: 3.10.1(vite@7.0.6(@types/node@22.17.0)(jiti@2.4.2)(less@4.3.0)(lightningcss@1.30.1)(sass@1.86.3)(terser@5.16.9)(tsx@4.20.3)(yaml@2.8.0))
@@ -3756,6 +3771,9 @@ packages:
 
   '@types/uuid@9.0.8':
     resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
+
+  '@types/webextension-polyfill@0.12.3':
+    resolution: {integrity: sha512-F58aDVSeN/MjUGazXo/cPsmR76EvqQhQ1v4x23hFjUX0cfAJYE+JBWwiOGW36/VJGGxoH74sVlRIF3z7SJCKyg==}
 
   '@typescript-eslint/eslint-plugin@8.34.1':
     resolution: {integrity: sha512-STXcN6ebF6li4PxwNeFnqF8/2BNDvBupf2OPx2yWNzr6mKNGF7q49VM00Pz5FaomJyqvbXpY6PhO+T9w139YEQ==}
@@ -7186,6 +7204,9 @@ packages:
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
+
+  webextension-polyfill@0.12.0:
+    resolution: {integrity: sha512-97TBmpoWJEE+3nFBQ4VocyCdLKfw54rFaJ6EVQYLBCXqCIpLSZkwGgASpv4oPt9gdKCJ80RJlcmNzNn008Ag6Q==}
 
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
@@ -10962,6 +10983,8 @@ snapshots:
   '@types/resolve@1.20.6': {}
 
   '@types/uuid@9.0.8': {}
+
+  '@types/webextension-polyfill@0.12.3': {}
 
   '@typescript-eslint/eslint-plugin@8.34.1(@typescript-eslint/parser@8.34.1(eslint@9.32.0(jiti@2.4.2))(typescript@5.9.2))(eslint@9.32.0(jiti@2.4.2))(typescript@5.9.2)':
     dependencies:
@@ -14886,6 +14909,8 @@ snapshots:
     dependencies:
       xml-name-validator: 5.0.0
     optional: true
+
+  webextension-polyfill@0.12.0: {}
 
   webidl-conversions@3.0.1: {}
 

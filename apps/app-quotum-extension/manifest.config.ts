@@ -14,7 +14,7 @@ export default defineManifest({
     },
     default_popup: 'src/popup/index.html',
   },
-  permissions: ['sidePanel', 'contentSettings'],
+  permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab'],
   content_scripts: [
     {
       js: ['src/content/main.tsx'],
@@ -27,5 +27,9 @@ export default defineManifest({
   options_ui: {
     open_in_tab: false,
     page: 'src/options-ui/index.html',
+  },
+  background: {
+    service_worker: 'src/background/index.ts',
+    type: 'module',
   },
 });

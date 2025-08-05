@@ -21,7 +21,9 @@
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "webextension-polyfill": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "catalog:",
@@ -33,6 +35,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/webextension-polyfill": "catalog:",
     "@vitejs/plugin-react-swc": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

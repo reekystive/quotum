@@ -85,6 +85,8 @@ catalog:
   wrangler: ^4.27.0
   zod: ^3.25.73
   eslint-plugin-better-tailwindcss: ^3.7.3
+  webextension-polyfill: ^0.12.0
+  '@types/webextension-polyfill': ^0.12.3
 
 catalogMode: strict
 

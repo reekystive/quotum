@@ -1,11 +1,15 @@
 words:
   - avenir
   - clsx
+  - contenteditable
   - crxjs
   - cuid
+  - diacriticals
   - dotenv
   - dotenvx
   - elif
+  - embiggen
+  - embiggenment
   - esbuild
   - grayscale
   - hookz
@@ -41,6 +45,7 @@ words:
   - vitejs
   - Vitest
   - WCAG
+  - webextension
   - webp
   - workerd
 flagWords:
