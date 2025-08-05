@@ -1,8 +1,8 @@
 import { delayInLocalDevOnly } from '#src/utils/debug-delay.ts';
-import { addTextAnchorToUrl } from '#src/utils/url-anchor.ts';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { createCaller } from '@quotum/app-quotum-server/shared';
 import { Quote } from '@quotum/app-quotum-server/shared-types';
+import { addTextAnchorToUrl } from '@quotum/utils';
 import { ExternalLink } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -157,7 +157,13 @@ export default async function QuotePage({ params }: QuotePageProps) {
         <span className="px-0.5 align-middle font-extrabold select-none"> &middot; </span>
 
         <Link
-          href={addTextAnchorToUrl(new URL(quote.url), quote.content).toString()}
+          href={addTextAnchorToUrl({
+            url: new URL(quote.url),
+            anchorTextStart: quote.anchorTextStart ?? quote.content,
+            anchorTextEnd: quote.anchorTextEnd ?? undefined,
+            anchorPrefix: quote.anchorPrefix ?? undefined,
+            anchorSuffix: quote.anchorSuffix ?? undefined,
+          }).toString()}
           target="_blank"
           rel="noopener noreferrer"
           className={`

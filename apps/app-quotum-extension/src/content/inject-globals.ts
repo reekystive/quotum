@@ -1,3 +1,4 @@
+import { addTextAnchorToUrl } from '@quotum/utils';
 import {
   generateFragment,
   GenerateFragmentStatus,
@@ -7,5 +8,8 @@ export const injectGlobals = (): void => {
   globalThis.fragmentGenerationUtils = {
     generateFragment,
     GenerateFragmentStatus,
+  };
+  globalThis.quotumUtils = {
+    addTextAnchorToUrl,
   };
 };

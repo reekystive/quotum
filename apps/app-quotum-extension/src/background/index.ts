@@ -1,3 +1,4 @@
+import { SERVER_BASE_URL } from '#src/constants.js';
 import { ExtractedQuoteDataSchema } from '#src/content/functions/extract-quote-types.js';
 import { extractSelectedQuoteFromPage } from '#src/content/functions/extract-quote.js';
 import { trpc } from '#src/services/trpc-client.js';
@@ -59,12 +60,16 @@ async function handleCreateQuoteLinkNew(tabId: number): Promise<void> {
       content: data.selectedText,
       title: data.pageTitle,
       url: data.url,
+      anchorTextStart: data.textStart,
+      anchorTextEnd: data.textEnd,
+      anchorPrefix: data.prefix,
+      anchorSuffix: data.suffix,
     });
 
     console.log('[Quotum] Quote created:', quote);
     if (quote?.id) {
       // Redirect to the quote page on the web app
-      const quoteUrl = new URL(`https://quotum.me/q/${quote.id}`);
+      const quoteUrl = new URL(`${SERVER_BASE_URL}/q/${quote.id}`);
       await browser.tabs.create({ url: quoteUrl.toString() });
     }
   } catch (error) {

@@ -20,6 +20,10 @@ export const appRouter = router({
         content: z.string().min(1),
         title: z.string().min(1),
         url: z.string().url(),
+        anchorTextStart: z.string().optional(),
+        anchorTextEnd: z.string().optional(),
+        anchorPrefix: z.string().optional(),
+        anchorSuffix: z.string().optional(),
       })
     )
     .mutation(async (opts) => {

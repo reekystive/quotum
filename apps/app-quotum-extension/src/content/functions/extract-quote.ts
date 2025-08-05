@@ -20,13 +20,15 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
   }
 
   const fragment = result.fragment;
-  const prefix = fragment.prefix ? `${encodeURIComponent(fragment.prefix)}-,` : '';
-  const suffix = fragment.suffix ? `,-${encodeURIComponent(fragment.suffix)}` : '';
-  const textStart = encodeURIComponent(fragment.textStart);
-  const textEnd = fragment.textEnd ? `,${encodeURIComponent(fragment.textEnd)}` : '';
-  const urlWithTextAnchor = new URL(location.href);
+
   // https://example.com#:~:text=[prefix-,]textStart[,textEnd][,-suffix]
-  urlWithTextAnchor.hash = `#:~:text=${prefix}${textStart}${textEnd}${suffix}`;
+  const urlWithTextAnchor = globalThis.quotumUtils.addTextAnchorToUrl({
+    url: new URL(location.href),
+    anchorTextStart: fragment.textStart,
+    anchorTextEnd: fragment.textEnd,
+    anchorPrefix: fragment.prefix,
+    anchorSuffix: fragment.suffix,
+  });
 
   console.log('[Quotum] Generated fragment:', urlWithTextAnchor.toString());
 

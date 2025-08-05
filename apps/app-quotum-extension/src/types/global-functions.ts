@@ -1,3 +1,4 @@
+import type { addTextAnchorToUrl } from '@quotum/utils';
 import type {
   generateFragment,
   GenerateFragmentStatus,
@@ -7,5 +8,8 @@ declare global {
   var fragmentGenerationUtils: {
     generateFragment: typeof generateFragment;
     GenerateFragmentStatus: typeof GenerateFragmentStatus;
+  };
+  var quotumUtils: {
+    addTextAnchorToUrl: typeof addTextAnchorToUrl;
   };
 }

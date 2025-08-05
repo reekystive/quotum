@@ -9,6 +9,10 @@ export default function DebugPage() {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
+  const [anchorTextStart, setAnchorTextStart] = useState('');
+  const [anchorTextEnd, setAnchorTextEnd] = useState('');
+  const [anchorPrefix, setAnchorPrefix] = useState('');
+  const [anchorSuffix, setAnchorSuffix] = useState('');
 
   const router = useRouter();
 
@@ -28,6 +32,10 @@ export default function DebugPage() {
       content,
       title,
       url,
+      anchorTextStart: anchorTextStart || undefined,
+      anchorTextEnd: anchorTextEnd || undefined,
+      anchorPrefix: anchorPrefix || undefined,
+      anchorSuffix: anchorSuffix || undefined,
     });
   };
 
@@ -122,6 +130,110 @@ export default function DebugPage() {
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
           placeholder="https://medium.com/..."
+        />
+
+        <div className="h-3" />
+
+        <label
+          htmlFor="anchorTextStart"
+          className={`
+            block text-sm font-medium text-neutral-700
+            dark:text-neutral-300
+          `}
+        >
+          Anchor Text Start (optional)
+        </label>
+
+        <div className="h-1" />
+
+        <input
+          type="text"
+          id="anchorTextStart"
+          value={anchorTextStart}
+          onChange={(e) => setAnchorTextStart(e.target.value)}
+          className={`
+            resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
+            dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
+          `}
+          placeholder="Start of anchor text..."
+        />
+
+        <div className="h-3" />
+
+        <label
+          htmlFor="anchorTextEnd"
+          className={`
+            block text-sm font-medium text-neutral-700
+            dark:text-neutral-300
+          `}
+        >
+          Anchor Text End (optional)
+        </label>
+
+        <div className="h-1" />
+
+        <input
+          type="text"
+          id="anchorTextEnd"
+          value={anchorTextEnd}
+          onChange={(e) => setAnchorTextEnd(e.target.value)}
+          className={`
+            resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
+            dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
+          `}
+          placeholder="End of anchor text..."
+        />
+
+        <div className="h-3" />
+
+        <label
+          htmlFor="anchorPrefix"
+          className={`
+            block text-sm font-medium text-neutral-700
+            dark:text-neutral-300
+          `}
+        >
+          Anchor Prefix (optional)
+        </label>
+
+        <div className="h-1" />
+
+        <input
+          type="text"
+          id="anchorPrefix"
+          value={anchorPrefix}
+          onChange={(e) => setAnchorPrefix(e.target.value)}
+          className={`
+            resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
+            dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
+          `}
+          placeholder="Text before anchor..."
+        />
+
+        <div className="h-3" />
+
+        <label
+          htmlFor="anchorSuffix"
+          className={`
+            block text-sm font-medium text-neutral-700
+            dark:text-neutral-300
+          `}
+        >
+          Anchor Suffix (optional)
+        </label>
+
+        <div className="h-1" />
+
+        <input
+          type="text"
+          id="anchorSuffix"
+          value={anchorSuffix}
+          onChange={(e) => setAnchorSuffix(e.target.value)}
+          className={`
+            resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
+            dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
+          `}
+          placeholder="Text after anchor..."
         />
 
         <div className="h-6" />
