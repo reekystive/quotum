@@ -6,18 +6,18 @@ export default defineManifest({
   name: 'Quotum',
   version: packageJson.version,
   icons: {
-    48: 'public/logo.png',
+    48: 'icon-dark.png',
   },
   action: {
     default_icon: {
-      48: 'public/logo.png',
+      48: 'icon-dark.png',
     },
     default_popup: 'src/popup/index.html',
   },
   permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab'],
   content_scripts: [
     {
-      js: ['src/content/main.tsx'],
+      js: ['src/content/main.tsx', 'src/content/injected/index.ts'],
       matches: ['https://*/*'],
     },
   ],

@@ -1,7 +1,10 @@
 import { createQuoteFromSelectionAndOpen } from '#src/services/create-quote-and-open.js';
 import browser from 'webextension-polyfill';
+import { handleSystemThemeChange } from './handle-system-theme-change.js';
 
 console.log('[Quotum] Background script loaded');
+
+handleSystemThemeChange();
 
 // Initialize context menu on extension install
 browser.runtime.onInstalled.addListener(() => {

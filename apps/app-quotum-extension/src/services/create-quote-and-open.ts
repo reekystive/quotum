@@ -1,6 +1,6 @@
 import { SERVER_BASE_URL } from '#src/constants.js';
-import { ExtractedQuoteDataSchema } from '#src/content/functions/extract-quote-types.js';
-import { extractSelectedQuoteFromPage } from '#src/content/functions/extract-quote.js';
+import { ExtractedQuoteDataSchema } from '#src/content/serializable-functions/extract-quote-types.js';
+import { extractSelectedQuoteFromPage } from '#src/content/serializable-functions/extract-quote.js';
 import { trpc } from '#src/services/trpc-client.js';
 import browser from 'webextension-polyfill';
 

@@ -1,13 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './content.css';
-import { injectGlobals } from './inject-globals.js';
 import tailwindText from './shadow-root.css?inline';
 import { App } from './views/app.js';
 
-console.log('[CRXJS] Hello world from content script!');
-
-injectGlobals();
+console.log('[Quotum] injecting content scripts for ui');
 
 const host = document.createElement('div');
 host.id = 'quotum-extension-content-script';
