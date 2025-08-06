@@ -29,7 +29,7 @@ export default defineManifest({
     page: 'src/app/ui-options/index.html',
   },
   background: {
-    service_worker: 'src/background/index.ts',
+    service_worker: 'src/app/background/index.ts',
     type: 'module',
   },
 });
