@@ -58,6 +58,7 @@ const eslintConfig = [
       '**/.open-next/',
       '**/.wrangler/',
       '**/app-types/quotum-cloudflare.d.ts',
+      '**/release/',
     ],
   },
   { linterOptions: { reportUnusedDisableDirectives: true } },

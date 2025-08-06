@@ -12,21 +12,21 @@ export default defineManifest({
     default_icon: {
       48: 'icon-dark.png',
     },
-    default_popup: 'src/popup/index.html',
+    default_popup: 'src/app/ui-popup/index.html',
   },
   permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab'],
   content_scripts: [
     {
-      js: ['src/content/main.tsx', 'src/content/injected/index.ts'],
+      js: ['src/app/content/main.tsx', 'src/app/content/injected/index.ts'],
       matches: ['https://*/*'],
     },
   ],
   side_panel: {
-    default_path: 'src/side-panel/index.html',
+    default_path: 'src/app/ui-side-panel/index.html',
   },
   options_ui: {
     open_in_tab: true,
-    page: 'src/options-ui/index.html',
+    page: 'src/app/ui-options/index.html',
   },
   background: {
     service_worker: 'src/background/index.ts',
