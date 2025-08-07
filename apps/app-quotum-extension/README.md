@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD036 -->
+<!-- markdownlint-disable MD036 MD034 -->
 
 # Quotum Extension
 
@@ -58,6 +58,7 @@ Quotum is a powerful Chrome extension that lets you capture meaningful text from
 ## Technical Details
 
 ### **Extension Permissions**
+
 - **Context Menus**: Adds "Create Quote" to your right-click menu
 - **Active Tab**: Accesses current tab only when you create quotes
 - **Scripting**: Injects code on-demand to extract selected text and show notifications
@@ -65,13 +66,15 @@ Quotum is a powerful Chrome extension that lets you capture meaningful text from
 - **Host Permissions**: Communicates with Quotum API servers to save your quotes
 
 ### **Server Environments**
+
 - **Production**: https://quotum.me (default)
-- **Development**: https://dev.quotum.me  
+- **Development**: https://dev.quotum.me
 - **Local**: http://localhost:3000 (for developers)
 
 ### **How It Works**
+
 1. You select text on any HTTPS webpage
-2. Right-click and choose "Create Quote" 
+2. Right-click and choose "Create Quote"
 3. Extension extracts selected text and generates precise text fragment anchors
 4. Quote data is sent to your chosen Quotum server
 5. You're redirected to view your saved quote

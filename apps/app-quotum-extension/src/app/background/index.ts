@@ -9,6 +9,7 @@ console.log('[Quotum] Background script loaded');
 // Initialize context menu on extension install
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 browser.runtime.onInstalled.addListener(async () => {
+  console.log('[Quotum] onInstalled');
   browser.contextMenus.create({
     id: 'create-quote-link',
     title: 'Create Quote Link',

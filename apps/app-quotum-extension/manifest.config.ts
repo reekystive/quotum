@@ -1,10 +1,12 @@
 import { defineManifest } from '@crxjs/vite-plugin';
-import packageJson from './package.json' with { type: 'json' };
+import { extensionVersion, extensionVersionName } from './versioning.js';
 
 export default defineManifest({
   manifest_version: 3,
   name: 'Quotum',
-  version: packageJson.version,
+  version: extensionVersion,
+  description: 'Instantly save and share text quotes from any webpage',
+  version_name: extensionVersionName,
   icons: {
     48: 'icon-dark.png',
   },
