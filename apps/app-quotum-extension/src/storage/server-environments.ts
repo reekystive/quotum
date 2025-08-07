@@ -27,7 +27,7 @@ export const DEFAULT_SERVER_ENVIRONMENTS = [
   },
 ] as const satisfies ServerEnvironment[];
 
-export const DEFAULT_SERVER_ENVIRONMENT = DEFAULT_SERVER_ENVIRONMENTS[1];
+export const DEFAULT_SERVER_ENVIRONMENT = DEFAULT_SERVER_ENVIRONMENTS[0];
 
 export const getSelectedServerEnvironmentInStorage = async (): Promise<ServerEnvironment> => {
   const options = await browser.storage.local.get('selectedServerEnvironment');
