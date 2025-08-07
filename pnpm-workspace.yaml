@@ -85,6 +85,7 @@ catalog:
   text-fragments-polyfill: ^6.4.1
   radix-ui: ^1.4.2
   '@faker-js/faker': ^9.9.0
+  postcss: ^8.5.6
 
 catalogMode: strict
 

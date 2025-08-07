@@ -65,6 +65,7 @@
     "@types/react-dom": "catalog:",
     "concurrently": "catalog:",
     "nodemon": "catalog:",
+    "postcss": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }
