@@ -14,16 +14,13 @@ export default defineManifest({
     },
     default_popup: 'src/app/ui-popup/index.html',
   },
-  permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab', 'storage'],
+  permissions: ['contextMenus', 'scripting', 'activeTab', 'storage'],
   content_scripts: [
     {
       js: ['src/app/content/main.tsx', 'src/app/content/injected/index.ts'],
       matches: ['https://*/*'],
     },
   ],
-  side_panel: {
-    default_path: 'src/app/ui-side-panel/index.html',
-  },
   options_ui: {
     open_in_tab: true,
     page: 'src/app/ui-options/index.html',
