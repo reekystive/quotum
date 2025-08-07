@@ -63,6 +63,7 @@ Quotum is a powerful Chrome extension that lets you capture meaningful text from
 - **Active Tab**: Accesses current tab only when you create quotes
 - **Scripting**: Injects code on-demand to extract selected text and show notifications
 - **Storage**: Saves your server environment preferences (production/development/local)
+- **Offscreen**: Monitors system theme changes for adaptive icon display
 - **Host Permissions**: Communicates with Quotum API servers to save your quotes
 
 ### **Server Environments**

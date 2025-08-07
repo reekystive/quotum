@@ -38,6 +38,12 @@ The activeTab permission allows access to the current tab when users actively cr
 The storage permission saves user configuration preferences locally in the browser. Specifically, we store the user's selected server environment (production, development, or local) for API connections. This allows users to choose which Quotum server instance they want to connect to without reconfiguring each time. All stored data relates only to user preferences and contains no personal or sensitive information, enhancing user experience by maintaining their chosen settings.
 ```
 
+### offscreen Justification
+
+```
+The offscreen permission enables our extension to create an invisible background document for monitoring system theme changes (light/dark mode). This allows us to automatically update the extension's toolbar icon to match the user's theme preference - displaying a dark icon in light mode and a light icon in dark mode. The offscreen document only runs minimal JavaScript to detect theme changes and communicate with the background script. No user data is processed, and it operates purely for UI enhancement purposes.
+```
+
 ### Host Permission Justification
 
 ```
@@ -101,6 +107,7 @@ https://quotum.me/privacy
 - `scripting` - On-demand code injection for quote extraction
 - `activeTab` - Access to current tab during user-initiated actions
 - `storage` - Local storage of user preferences
+- `offscreen` - Theme detection and dynamic icon updates
 - `host_permissions` - API communication with Quotum servers
 
 ### Server Environments
