@@ -18,11 +18,15 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@faker-js/faker": "catalog:",
     "@quotum/app-quotum-server": "workspace:^",
     "@quotum/tailwindcss": "workspace:^",
     "@quotum/utils": "workspace:^",
     "@quotum/vendor-wrapper": "workspace:^",
     "@trpc/client": "catalog:",
+    "lucide-react": "catalog:",
+    "motion": "catalog:",
+    "radix-ui": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "webextension-polyfill": "catalog:",

@@ -55,8 +55,8 @@ catalog:
   eslint-plugin-storybook: ^9.1.0
   globals: ^16.3.0
   js-cookie: ^3.0.5
-  lucide-react: ^0.525.0
-  motion: ^12.18.1
+  lucide-react: 0.525.0
+  motion: 12.18.1
   nanoid: ^5.1.5
   next: ^15.3.5
   next-auth: 5.0.0-beta.29
@@ -88,6 +88,8 @@ catalog:
   webextension-polyfill: ^0.12.0
   '@types/webextension-polyfill': ^0.12.3
   text-fragments-polyfill: ^6.4.1
+  radix-ui: ^1.4.2
+  '@faker-js/faker': ^9.9.0
 
 catalogMode: strict
 

@@ -1,5 +1,11 @@
-// export const SERVER_BASE_URL = 'https://quotum.me';
-export const SERVER_BASE_URL = 'https://dev.quotum.me';
-// export const SERVER_BASE_URL = 'http://localhost:3000';
+import { getSelectedServerEnvironmentInStorage } from './storage/server-environments.js';
 
-export const TRPC_ENDPOINT_URL = `${SERVER_BASE_URL}/api/trpc`;
+export const getServerBaseUrl = async () => {
+  const selectedServerEnvironment = await getSelectedServerEnvironmentInStorage();
+  return selectedServerEnvironment.value;
+};
+
+export const getTrpcEndpointUrl = async () => {
+  const serverBaseUrl = await getServerBaseUrl();
+  return `${serverBaseUrl}/api/trpc`;
+};

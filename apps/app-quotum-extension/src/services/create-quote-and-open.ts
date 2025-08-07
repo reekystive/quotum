@@ -1,8 +1,8 @@
 import { ExtractedQuoteDataSchema } from '#src/app/content/serializable-functions/extract-quote-types.js';
 import { extractSelectedQuoteFromPage } from '#src/app/content/serializable-functions/extract-quote.js';
-import { SERVER_BASE_URL } from '#src/constants.js';
-import { trpc } from '#src/services/trpc-client.js';
+import { getServerBaseUrl } from '#src/constants.js';
 import browser from 'webextension-polyfill';
+import { createTrpcClient } from './trpc-client.js';
 
 export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
   // Inject script to extract quote data from the page
@@ -29,7 +29,8 @@ export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
   }
 
   // Create the quote using the TRPC client
-  const quote = await trpc.quoteCreate.mutate({
+  const trpcClient = await createTrpcClient();
+  const quote = await trpcClient.quoteCreate.mutate({
     content: data.selectedText,
     title: data.pageTitle,
     url: data.url,
@@ -43,7 +44,7 @@ export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
 
   if (quote?.id) {
     // Redirect to the quote page on the web app
-    const quoteUrl = new URL(`${SERVER_BASE_URL}/q/${quote.id}`);
+    const quoteUrl = new URL(`${await getServerBaseUrl()}/q/${quote.id}`);
     await browser.tabs.create({ url: quoteUrl.toString() });
   }
 

@@ -14,7 +14,7 @@ export default defineManifest({
     },
     default_popup: 'src/app/ui-popup/index.html',
   },
-  permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab'],
+  permissions: ['sidePanel', 'contentSettings', 'contextMenus', 'scripting', 'activeTab', 'storage'],
   content_scripts: [
     {
       js: ['src/app/content/main.tsx', 'src/app/content/injected/index.ts'],
