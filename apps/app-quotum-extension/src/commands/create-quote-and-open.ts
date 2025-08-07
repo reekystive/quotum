@@ -1,5 +1,5 @@
-import { ExtractedQuoteDataSchema } from '#src/app/content/serializable-functions/extract-quote-types.js';
-import { extractSelectedQuoteFromPage } from '#src/app/content/serializable-functions/extract-quote.js';
+import { ExtractedQuoteDataSchema } from '#src/app/content-injection/serializable-functions/extract-quote-types.js';
+import { extractSelectedQuoteFromPage } from '#src/app/content-injection/serializable-functions/extract-quote.js';
 import { getServerBaseUrl } from '#src/constants.js';
 import browser from 'webextension-polyfill';
 import { createTrpcClient } from '../services/trpc-client.js';

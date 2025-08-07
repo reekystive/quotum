@@ -1,4 +1,5 @@
 import browser from 'webextension-polyfill';
+import { ensureContentScriptsInjected } from '../content-injection-background/ensure-injection.js';
 import { handleCreateQuoteLink } from './handle-create-quote-link.js';
 import { handleSystemThemeChange } from './handle-system-theme-change.js';
 
@@ -15,10 +16,13 @@ browser.runtime.onInstalled.addListener(() => {
   });
 });
 
-browser.contextMenus.onClicked.addListener((info, tab) => {
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+browser.contextMenus.onClicked.addListener(async (info, tab) => {
+  if (!tab?.id) return;
+  await ensureContentScriptsInjected(tab.id);
+
   switch (info.menuItemId) {
     case 'create-quote-link': {
-      if (!tab?.id) return;
       void handleCreateQuoteLink(tab.id);
       break;
     }

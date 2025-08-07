@@ -1,6 +1,7 @@
 import { createQuoteFromSelectionAndOpen } from '#src/commands/create-quote-and-open.js';
 import { FC, useCallback } from 'react';
 import browser from 'webextension-polyfill';
+import { ensureContentScriptsInjected } from '../content-injection-background/ensure-injection.js';
 
 export const App: FC = () => {
   const handleClickCreateQuote = useCallback(async () => {
@@ -8,6 +9,7 @@ export const App: FC = () => {
     if (!tabId) {
       return;
     }
+    await ensureContentScriptsInjected(tabId);
     await createQuoteFromSelectionAndOpen(tabId);
   }, []);
 

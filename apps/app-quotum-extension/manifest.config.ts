@@ -15,12 +15,7 @@ export default defineManifest({
     default_popup: 'src/app/ui-popup/index.html',
   },
   permissions: ['contextMenus', 'scripting', 'activeTab', 'storage'],
-  content_scripts: [
-    {
-      js: ['src/app/content/injected/index.ts', 'src/app/content/main.tsx'],
-      matches: ['https://*/*'],
-    },
-  ],
+  host_permissions: ['https://quotum.me/*', 'https://dev.quotum.me/*', 'http://localhost:3000/*'],
   options_ui: {
     open_in_tab: true,
     page: 'src/app/ui-options/index.html',

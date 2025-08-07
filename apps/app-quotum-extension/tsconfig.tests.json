@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@quotum/tsconfig/tsconfig.web.json",
   "compilerOptions": {
-    "types": ["@quotum/app-types/vite", "node", "chrome", "webextension-polyfill"],
+    "types": ["@quotum/app-types/vite", "node", "chrome", "webextension-polyfill", "@crxjs/vite-plugin/client"],
     "rootDir": ".",
     "outDir": "./node_modules/.cache/tsc-tests",
     // https://github.com/microsoft/TypeScript/issues/30925#issuecomment-483371766

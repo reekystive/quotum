@@ -19,6 +19,7 @@ declare global {
       toastQuoteCreated: (quoteUrl: string) => void;
     };
   };
+  var contentScriptsInjected: undefined | true;
 }
 
 export type Injected = typeof globalThis.injected;
