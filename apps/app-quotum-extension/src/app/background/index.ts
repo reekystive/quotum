@@ -1,4 +1,4 @@
-import { createQuoteFromSelectionAndOpen } from '#src/services/create-quote-and-open.js';
+import { createQuoteFromSelectionAndOpen } from '#src/commands/create-quote-and-open.js';
 import browser from 'webextension-polyfill';
 import { handleSystemThemeChange } from './handle-system-theme-change.js';
 
@@ -32,6 +32,12 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
 // Handle context menu clicks
 async function handleCreateQuoteLinkNew(tabId: number): Promise<void> {
   try {
+    void browser.scripting.executeScript({
+      target: { tabId },
+      func: () => {
+        globalThis.sonnerUtils.toast('Creating quote link...');
+      },
+    });
     await createQuoteFromSelectionAndOpen(tabId);
   } catch (error) {
     console.error('Error creating quote link:', error);

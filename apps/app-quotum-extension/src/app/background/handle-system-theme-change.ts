@@ -1,6 +1,8 @@
 import { runtimeMessageSchema } from '#src/schemas/runtime-message.js';
 import browser from 'webextension-polyfill';
 
+let systemTheme: 'light' | 'dark' = 'dark';
+
 const setIconForTheme = (theme: 'light' | 'dark') => {
   void browser.action.setIcon({
     path: {
@@ -10,7 +12,12 @@ const setIconForTheme = (theme: 'light' | 'dark') => {
 };
 
 const updateTheme = (theme: 'light' | 'dark') => {
+  systemTheme = theme;
   setIconForTheme(theme);
+};
+
+export const getSystemTheme = (): 'light' | 'dark' => {
+  return systemTheme;
 };
 
 export const handleSystemThemeChange = () => {

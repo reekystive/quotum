@@ -3,6 +3,7 @@ import {
   generateFragment,
   GenerateFragmentStatus,
 } from '@quotum/vendor-wrapper/text-fragments-polyfill/fragment-generation-utils';
+import { toast } from 'sonner';
 
 export const injectGlobals = (): void => {
   globalThis.fragmentGenerationUtils = {
@@ -11,5 +12,8 @@ export const injectGlobals = (): void => {
   };
   globalThis.quotumUtils = {
     addTextAnchorToUrl,
+  };
+  globalThis.sonnerUtils = {
+    toast,
   };
 };

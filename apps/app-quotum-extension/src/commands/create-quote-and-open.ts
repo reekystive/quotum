@@ -2,7 +2,7 @@ import { ExtractedQuoteDataSchema } from '#src/app/content/serializable-function
 import { extractSelectedQuoteFromPage } from '#src/app/content/serializable-functions/extract-quote.js';
 import { getServerBaseUrl } from '#src/constants.js';
 import browser from 'webextension-polyfill';
-import { createTrpcClient } from './trpc-client.js';
+import { createTrpcClient } from '../services/trpc-client.js';
 
 export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
   // Inject script to extract quote data from the page

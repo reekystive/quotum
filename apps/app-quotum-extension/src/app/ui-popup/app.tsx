@@ -1,4 +1,4 @@
-import { createQuoteFromSelectionAndOpen } from '#src/services/create-quote-and-open.js';
+import { createQuoteFromSelectionAndOpen } from '#src/commands/create-quote-and-open.js';
 import { FC, useCallback } from 'react';
 import browser from 'webextension-polyfill';
 

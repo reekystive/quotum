@@ -33,6 +33,7 @@ words:
   - rgba
   - shadcn
   - simplewebauthn
+  - sonner
   - tanstack
   - trpc
   - tsgo
