@@ -35,11 +35,31 @@ async function handleCreateQuoteLinkNew(tabId: number): Promise<void> {
     void browser.scripting.executeScript({
       target: { tabId },
       func: () => {
-        globalThis.sonnerUtils.toast('Creating quote link...');
+        console.log('Creating quote link...');
+        globalThis.sonnerUtils.toast.loading('Creating quote link...');
       },
     });
-    await createQuoteFromSelectionAndOpen(tabId);
+
+    const quote = await createQuoteFromSelectionAndOpen(tabId);
+    console.log('Quote created:', quote);
+
+    void browser.scripting.executeScript({
+      target: { tabId },
+      func: (quoteId: string) => {
+        console.log(`Quote ${quoteId} created. Redirecting to quote page...`);
+        globalThis.sonnerUtils.toast.dismiss();
+        globalThis.sonnerUtils.toast.success(`Quote created! Redirecting to quote page...`);
+      },
+      args: [quote?.id],
+    });
   } catch (error) {
     console.error('Error creating quote link:', error);
+    void browser.scripting.executeScript({
+      target: { tabId },
+      func: () => {
+        globalThis.sonnerUtils.toast.dismiss();
+        globalThis.sonnerUtils.toast.error('Error creating quote link');
+      },
+    });
   }
 }

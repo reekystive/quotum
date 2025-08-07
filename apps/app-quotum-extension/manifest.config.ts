@@ -17,7 +17,7 @@ export default defineManifest({
   permissions: ['contextMenus', 'scripting', 'activeTab', 'storage'],
   content_scripts: [
     {
-      js: ['src/app/content/main.tsx', 'src/app/content/injected/index.ts'],
+      js: ['src/app/content/injected/index.ts', 'src/app/content/main.tsx'],
       matches: ['https://*/*'],
     },
   ],
