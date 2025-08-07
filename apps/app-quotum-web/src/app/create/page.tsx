@@ -75,7 +75,7 @@ export default function DebugPage() {
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
           rows={5}
-          placeholder="Enter the quote content..."
+          placeholder="Machine learning algorithms are becoming increasingly sophisticated, enabling breakthroughs in medical diagnosis and treatment planning."
         />
 
         <div className="h-3" />
@@ -102,7 +102,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="Enter the page title..."
+          placeholder="AI Breakthroughs Transform Medical Diagnosis and Treatment"
         />
 
         <div className="h-3" />
@@ -129,7 +129,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="https://medium.com/..."
+          placeholder="https://techcrunch.com/2024/03/15/ai-healthcare-breakthrough"
         />
 
         <div className="h-3" />
@@ -141,7 +141,7 @@ export default function DebugPage() {
             dark:text-neutral-300
           `}
         >
-          Anchor Text Start (optional)
+          Quote start snippet, used to anchor the quote’s start position
         </label>
 
         <div className="h-1" />
@@ -155,7 +155,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="Start of anchor text..."
+          placeholder="Recent studies have shown that"
         />
 
         <div className="h-3" />
@@ -167,7 +167,7 @@ export default function DebugPage() {
             dark:text-neutral-300
           `}
         >
-          Anchor Text End (optional)
+          Quote end snippet, used to anchor the quote’s end position
         </label>
 
         <div className="h-1" />
@@ -181,7 +181,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="End of anchor text..."
+          placeholder="which represents a significant advancement."
         />
 
         <div className="h-3" />
@@ -193,7 +193,7 @@ export default function DebugPage() {
             dark:text-neutral-300
           `}
         >
-          Anchor Prefix (optional)
+          Preceding context, to help locate the quote unambiguously
         </label>
 
         <div className="h-1" />
@@ -207,7 +207,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="Text before anchor..."
+          placeholder="According to the research paper,"
         />
 
         <div className="h-3" />
@@ -219,7 +219,7 @@ export default function DebugPage() {
             dark:text-neutral-300
           `}
         >
-          Anchor Suffix (optional)
+          Following context, to help locate the quote unambiguously
         </label>
 
         <div className="h-1" />
@@ -233,7 +233,7 @@ export default function DebugPage() {
             resize-none rounded-sm bg-white p-3 text-neutral-900 outline-1 -outline-offset-1 outline-neutral-200
             dark:bg-neutral-900 dark:text-white dark:outline-neutral-700
           `}
-          placeholder="Text after anchor..."
+          placeholder="This finding could revolutionize patient care."
         />
 
         <div className="h-6" />
