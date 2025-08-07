@@ -53,8 +53,6 @@
     "better-sqlite3": "catalog:",
     "drizzle-orm": "catalog:",
     "nanoid": "catalog:",
-    "next-auth": "catalog:",
-    "resend": "catalog:",
     "server-only": "catalog:",
     "zod": "catalog:"
   },

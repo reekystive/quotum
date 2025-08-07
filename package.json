@@ -26,7 +26,6 @@
     "@types/node": "catalog:",
     "@typescript/native-preview": "catalog:",
     "eslint": "catalog:",
-    "eslint-config-next": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-better-tailwindcss": "catalog:",
     "eslint-plugin-prettier": "catalog:",
