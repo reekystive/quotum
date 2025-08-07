@@ -59,6 +59,7 @@ const eslintConfig = [
       '**/.wrangler/',
       '**/app-types/quotum-cloudflare.d.ts',
       '**/release/',
+      '**/workspace-tmp/',
     ],
   },
   { linterOptions: { reportUnusedDisableDirectives: true } },
