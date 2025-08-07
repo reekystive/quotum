@@ -7,15 +7,17 @@ import { toast } from 'sonner';
 import { toastQuoteCreated } from './sonner-toasts.js';
 
 export const injectGlobals = (): void => {
-  globalThis.fragmentGenerationUtils = {
-    generateFragment,
-    GenerateFragmentStatus,
-  };
-  globalThis.quotumUtils = {
-    addTextAnchorToUrl,
-  };
-  globalThis.sonnerUtils = {
-    toast,
-    toastQuoteCreated,
+  globalThis.injected = {
+    fragmentGenerationUtils: {
+      generateFragment,
+      GenerateFragmentStatus,
+    },
+    quotumUtils: {
+      addTextAnchorToUrl,
+    },
+    sonnerUtils: {
+      toast,
+      toastQuoteCreated,
+    },
   };
 };

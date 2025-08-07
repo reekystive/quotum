@@ -1,6 +1,7 @@
 import { toast } from 'sonner';
+import { Injected } from './inject-globals-types.js';
 
-export const toastQuoteCreated: typeof globalThis.sonnerUtils.toastQuoteCreated = (quoteUrl) => {
+export const toastQuoteCreated: Injected['sonnerUtils']['toastQuoteCreated'] = (quoteUrl) => {
   toast.success(
     <>
       <span>Quote created! Redirecting to </span>

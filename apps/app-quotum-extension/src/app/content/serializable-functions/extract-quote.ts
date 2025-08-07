@@ -10,8 +10,11 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
     };
   }
 
-  const result = globalThis.fragmentGenerationUtils.generateFragment(selection);
-  if (result.status !== globalThis.fragmentGenerationUtils.GenerateFragmentStatus.SUCCESS || !result.fragment) {
+  const result = globalThis.injected.fragmentGenerationUtils.generateFragment(selection);
+  if (
+    result.status !== globalThis.injected.fragmentGenerationUtils.GenerateFragmentStatus.SUCCESS ||
+    !result.fragment
+  ) {
     console.error('[Quotum] No fragment generated. result:', result);
     return {
       status: 'error',
@@ -22,7 +25,7 @@ export const extractSelectedQuoteFromPage = (): ExtractedQuoteData => {
   const fragment = result.fragment;
 
   // https://example.com#:~:text=[prefix-,]textStart[,textEnd][,-suffix]
-  const urlWithTextAnchor = globalThis.quotumUtils.addTextAnchorToUrl({
+  const urlWithTextAnchor = globalThis.injected.quotumUtils.addTextAnchorToUrl({
     url: new URL(location.href),
     anchorTextStart: fragment.textStart,
     anchorTextEnd: fragment.textEnd,

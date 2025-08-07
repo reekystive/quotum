@@ -8,7 +8,7 @@ export async function handleCreateQuoteLink(tabId: number): Promise<void> {
       target: { tabId },
       func: () => {
         console.log('Creating quote link...');
-        globalThis.sonnerUtils.toast.loading('Creating quote link...');
+        globalThis.injected.sonnerUtils.toast.loading('Creating quote link...');
       },
     });
 
@@ -19,8 +19,8 @@ export async function handleCreateQuoteLink(tabId: number): Promise<void> {
       target: { tabId },
       func: (quoteUrl: string) => {
         console.log(`Quote created with url ${quoteUrl}. Redirecting to quote page...`);
-        globalThis.sonnerUtils.toast.dismiss();
-        globalThis.sonnerUtils.toastQuoteCreated(quoteUrl);
+        globalThis.injected.sonnerUtils.toast.dismiss();
+        globalThis.injected.sonnerUtils.toastQuoteCreated(quoteUrl);
       },
       args: [quote.quoteUrl],
     });
@@ -29,8 +29,8 @@ export async function handleCreateQuoteLink(tabId: number): Promise<void> {
     void browser.scripting.executeScript({
       target: { tabId },
       func: () => {
-        globalThis.sonnerUtils.toast.dismiss();
-        globalThis.sonnerUtils.toast.error('Error creating quote link');
+        globalThis.injected.sonnerUtils.toast.dismiss();
+        globalThis.injected.sonnerUtils.toast.error('Error creating quote link');
       },
     });
   }
