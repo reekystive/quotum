@@ -18,14 +18,14 @@ export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
 
   if (!parsedResult.success) {
     console.error('[Quotum] Invalid extracted data:', parsedResult.error);
-    return;
+    throw new Error('Failed to extract quote.');
   }
 
   const data = parsedResult.data;
 
   if (data.status === 'error') {
     console.error('[Quotum] Error extracting quote:', data.message);
-    return;
+    throw new Error('Failed to extract quote.');
   }
 
   // Create the quote using the TRPC client
@@ -42,11 +42,13 @@ export const createQuoteFromSelectionAndOpen = async (tabId: number) => {
 
   console.log('[Quotum] Quote created:', quote);
 
-  if (quote?.id) {
-    // Redirect to the quote page on the web app
-    const quoteUrl = new URL(`${await getServerBaseUrl()}/q/${quote.id}`);
-    await browser.tabs.create({ url: quoteUrl.toString() });
+  if (!quote?.id) {
+    throw new Error('Failed to create quote.');
   }
 
-  return quote;
+  // Redirect to the quote page on the web app
+  const quoteUrl = new URL(`${await getServerBaseUrl()}/q/${quote.id}`);
+  await browser.tabs.create({ url: quoteUrl.toString() });
+
+  return { quoteCreated: quote, quoteUrl: quoteUrl.toString() };
 };

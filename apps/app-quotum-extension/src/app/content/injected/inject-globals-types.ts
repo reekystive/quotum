@@ -15,5 +15,6 @@ declare global {
   };
   var sonnerUtils: {
     toast: typeof toast;
+    toastQuoteCreated: (quoteUrl: string) => void;
   };
 }

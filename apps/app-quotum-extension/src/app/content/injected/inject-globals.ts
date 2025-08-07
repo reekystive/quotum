@@ -4,6 +4,7 @@ import {
   GenerateFragmentStatus,
 } from '@quotum/vendor-wrapper/text-fragments-polyfill/fragment-generation-utils';
 import { toast } from 'sonner';
+import { toastQuoteCreated } from './sonner-toasts.js';
 
 export const injectGlobals = (): void => {
   globalThis.fragmentGenerationUtils = {
@@ -15,5 +16,6 @@ export const injectGlobals = (): void => {
   };
   globalThis.sonnerUtils = {
     toast,
+    toastQuoteCreated,
   };
 };
