@@ -21,6 +21,7 @@ export const getSystemTheme = (): 'light' | 'dark' => {
 };
 
 export const handleSystemThemeChange = () => {
+  console.log('[Quotum] listening for system theme change');
   browser.runtime.onMessage.addListener((rawMessage: unknown) => {
     const message = runtimeMessageSchema.parse(rawMessage);
     if (message.type !== 'system-theme-change') {

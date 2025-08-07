@@ -15,8 +15,9 @@ browser.runtime.onInstalled.addListener(async () => {
     contexts: ['selection'],
   });
   // Listen for system theme changes
-  await ensureOffscreen();
   handleSystemThemeChange();
+  // Send init theme and theme change event from offscreen document to background script
+  await ensureOffscreen();
 });
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
