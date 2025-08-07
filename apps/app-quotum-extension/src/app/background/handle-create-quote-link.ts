@@ -22,7 +22,7 @@ export async function handleCreateQuoteLink(tabId: number): Promise<void> {
         globalThis.sonnerUtils.toast.dismiss();
         globalThis.sonnerUtils.toastQuoteCreated(quoteUrl);
       },
-      args: [quote.quoteCreated.id],
+      args: [quote.quoteUrl],
     });
   } catch (error) {
     console.error('Error creating quote link:', error);
