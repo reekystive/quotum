@@ -4,7 +4,7 @@ import { Toaster } from 'sonner';
 export const NonShadowRoot: FC = () => {
   return (
     <>
-      <Toaster theme="system" />;
+      <Toaster theme="system" position="top-right" />;
     </>
   );
 };
