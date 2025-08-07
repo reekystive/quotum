@@ -48,10 +48,33 @@ Quotum is a powerful Chrome extension that lets you capture meaningful text from
 
 ## Privacy & Security
 
-- Only processes text you explicitly select
-- Secure HTTPS communication with Quotum servers
-- No tracking or analytics - your data stays private
-- Open source and transparent
+- **Minimal Permissions**: Uses only essential permissions for core functionality
+- **On-Demand Operation**: Only activates when you explicitly create quotes
+- **Secure API Communication**: Encrypted connections to Quotum servers (quotum.me, dev.quotum.me)
+- **Local Preferences**: Stores only your server configuration choices locally
+- **No Background Monitoring**: Never tracks your browsing or collects data passively
+- **Transparent Processing**: Only processes text you explicitly select and choose to save
+
+## Technical Details
+
+### **Extension Permissions**
+- **Context Menus**: Adds "Create Quote" to your right-click menu
+- **Active Tab**: Accesses current tab only when you create quotes
+- **Scripting**: Injects code on-demand to extract selected text and show notifications
+- **Storage**: Saves your server environment preferences (production/development/local)
+- **Host Permissions**: Communicates with Quotum API servers to save your quotes
+
+### **Server Environments**
+- **Production**: https://quotum.me (default)
+- **Development**: https://dev.quotum.me  
+- **Local**: http://localhost:3000 (for developers)
+
+### **How It Works**
+1. You select text on any HTTPS webpage
+2. Right-click and choose "Create Quote" 
+3. Extension extracts selected text and generates precise text fragment anchors
+4. Quote data is sent to your chosen Quotum server
+5. You're redirected to view your saved quote
 
 ## Perfect For
 

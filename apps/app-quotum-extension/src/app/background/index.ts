@@ -1,19 +1,22 @@
 import browser from 'webextension-polyfill';
 import { ensureContentScriptsInjected } from '../content-injection-background/ensure-injection.js';
+import { ensureOffscreen } from './ensure-offscreen.js';
 import { handleCreateQuoteLink } from './handle-create-quote-link.js';
 import { handleSystemThemeChange } from './handle-system-theme-change.js';
 
 console.log('[Quotum] Background script loaded');
 
-handleSystemThemeChange();
-
 // Initialize context menu on extension install
-browser.runtime.onInstalled.addListener(() => {
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+browser.runtime.onInstalled.addListener(async () => {
   browser.contextMenus.create({
     id: 'create-quote-link',
     title: 'Create Quote Link',
     contexts: ['selection'],
   });
+  // Listen for system theme changes
+  await ensureOffscreen();
+  handleSystemThemeChange();
 });
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
