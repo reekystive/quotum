@@ -1,5 +1,25 @@
 import { ArrowRight } from 'lucide-react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const metadata: Metadata = {
+  title: 'Home',
+  description:
+    'Discover and create meaningful quotes with Quotum. Your personal quote management platform for organizing, sharing, and discovering inspiring content.',
+  openGraph: {
+    title: 'Quotum - Quote Management Platform',
+    description:
+      'Discover and create meaningful quotes with Quotum. Your personal quote management platform for organizing, sharing, and discovering inspiring content.',
+    type: 'website',
+    url: '/',
+  },
+  twitter: {
+    title: 'Quotum - Quote Management Platform',
+    description:
+      'Discover and create meaningful quotes with Quotum. Your personal quote management platform for organizing, sharing, and discovering inspiring content.',
+  },
+};
 
 export default function Home() {
   return (

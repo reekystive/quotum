@@ -4,8 +4,28 @@ import { createCaller } from '@quotum/app-quotum-server/shared';
 import type { Quote } from '@quotum/app-quotum-server/shared-types';
 import { addTextAnchorToUrl } from '@quotum/utils';
 import { ExternalLink } from 'lucide-react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import 'server-only';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const metadata: Metadata = {
+  title: 'All Quotes',
+  description:
+    'Browse all quotes in the Quotum collection. Discover inspiring quotes from various sources and authors.',
+  openGraph: {
+    title: 'All Quotes - Quotum',
+    description:
+      'Browse all quotes in the Quotum collection. Discover inspiring quotes from various sources and authors.',
+    type: 'website',
+    url: '/quotes',
+  },
+  twitter: {
+    title: 'All Quotes - Quotum',
+    description:
+      'Browse all quotes in the Quotum collection. Discover inspiring quotes from various sources and authors.',
+  },
+};
 
 export default async function QuotesListPage() {
   let quotes: Quote[] = [];

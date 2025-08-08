@@ -1,4 +1,3 @@
-import cspellPlugin from '@cspell/eslint-plugin';
 import eslintJsPlugin from '@eslint/js';
 import next from '@next/eslint-plugin-next';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -9,7 +8,6 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import reactRefreshPlugin from 'eslint-plugin-react-refresh';
 import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
-import { fileURLToPath } from 'node:url';
 import tsEslint from 'typescript-eslint';
 
 /** @type {string[]} */
@@ -149,22 +147,6 @@ const eslintConfig = [
       'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 120 }],
     },
     files: TS_FILES,
-  },
-
-  // config for all
-  {
-    plugins: { '@cspell': cspellPlugin },
-    rules: {
-      '@cspell/spellchecker': [
-        'warn',
-        /** @type {import('@cspell/eslint-plugin').Options} */ ({
-          autoFix: true,
-          generateSuggestions: true,
-          numSuggestions: 3,
-          configFile: fileURLToPath(new URL('./cspell.config.yaml', import.meta.url)),
-        }),
-      ],
-    },
   },
 ];
 

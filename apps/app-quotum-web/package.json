@@ -66,6 +66,7 @@
     "concurrently": "catalog:",
     "nodemon": "catalog:",
     "postcss": "catalog:",
+    "schema-dts": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   }

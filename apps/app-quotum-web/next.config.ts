@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
     tsconfigPath: './tsconfig.web.json',
   },
   transpilePackages: ['@quotum/app-quotum-server'],
+  compress: true,
+  reactStrictMode: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
 };
 
 export default nextConfig;
