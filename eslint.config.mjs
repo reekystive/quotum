@@ -92,7 +92,7 @@ const eslintConfig = [
     settings: {
       react: { version: '19.1.0' },
       'better-tailwindcss': {
-        entryPoint: tailwindCssStylesheetPath.pathname,
+        entryPoint: fileURLToPath(tailwindCssStylesheetPath),
       },
     },
     files: TS_FILES,
